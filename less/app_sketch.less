@@ -1,0 +1,208 @@
+@base: white;
+@blue1: rgba(53,145,182,1);
+@blue2: rgba(106,232,246,0.8);
+@yellow1: rgba(241,231,103,1);
+@yellow2: rgba(254,182,69,0.2);
+@red1: rgba(255,0,0,.7);
+@red2: rgba(246,255,127,0.5);
+
+.border-radius(@radius) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.gradient-top-origin(@startColor, @endColor) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.gradient-top-left-origin(@startColor, @endColor) {
+  background: @startColor;
+  background: -moz-linear-gradient(-45deg, @startColor 0%, @endColor 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, @startColor), color-stop(100%, @endColor));
+  background: -webkit-linear-gradient(-45deg, @startColor 0%, @endColor 100%);
+  background: -o-linear-gradient(-45deg, @startColor 0%, @endColor 100%);
+  background: -ms-linear-gradient(-45deg, @startColor 0%, @endColor 100%);
+  background: linear-gradient(135deg, @startColor 0%, @endColor 100%);
+}
+
+.gradient-bottom-left-origin(@startColor, @endColor) {
+  background: @startColor;
+  background: -moz-linear-gradient(45deg, @startColor 0%, @endColor 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, @startColor), color-stop(100%, @endColor));
+  background: -webkit-linear-gradient(45deg, @startColor 0%, @endColor 100%);
+  background: -o-linear-gradient(45deg, @startColor 0%, @endColor 100%);
+  background: -ms-linear-gradient(45deg, @startColor 0%, @endColor 100%);
+  background: linear-gradient(45deg, @startColor 0%, @endColor 100%);
+}
+
+.gradient-ms(@startColor, @endColor){
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@{startColor}', endColorstr='@{endColor}', GradientType=1 );
+}
+
+.translate(@translateX, @translateY) {
+  -webkit-transform:  translate(@translateX, @translateY);
+  -ms-transform:      translate(@translateX, @translateY);
+  transform:          translate(@translateX, @translateY);
+}
+
+.rotate (@deg) {
+  -webkit-transform: rotate(@deg);
+  -moz-transform:    rotate(@deg);
+  -ms-transform:     rotate(@deg);
+  -o-transform:      rotate(@deg);
+}
+
+.skewX(@skewX) {
+  -webkit-transform:  skewX(@skewX);
+  -ms-transform:      skewX(@skewX);
+  transform:          skewX(@skewX);
+}
+
+.gradient-red {
+  .gradient-bottom-left-origin(@red1, @red2);
+  // .gradient-ms(#ff0000, #f6ff7f);
+}
+
+.equilateral-triangle-pointing-up(@side, @triangleColor) {
+  width: 0;
+  height: 0;
+  border-left: @side solid transparent;
+  border-right: @side solid transparent;
+  border-bottom: (@side * 1.732) solid @triangleColor;
+}
+
+/**/
+/* * * * * * * * * * * * * * * * * * styles * * * * * * * * * * * * * */
+/**/
+
+body{
+  background-color: @base;
+}
+
+// .star {
+//   margin: 80px;
+//   height: 300px;
+//   width: 300px;
+//   background: @red1;
+//   position: absolute;
+// }
+
+// .star:before {
+//   // margin: 40px;
+//   height: 300px;
+//   width: 300px;
+//   background: @red1;
+//   content:"";
+//   position: absolute;
+//   -moz-transform: rotate(30deg);
+//   -webkit-transform: rotate(30deg);
+//   -ms-transform: rotate(30deg);
+//   -o-transform: rotate(30deg);
+//   transform: rotate(30deg);
+// }
+
+// .star:after {
+//   // margin: 40px;
+//   height: 300px;
+//   width: 300px;
+//   background: @red1;
+//   content:"";
+//   position: absolute;
+//   -moz-transform: rotate(-30deg);
+//   -webkit-transform: rotate(-30deg);
+//   -ms-transform: rotate(-30deg);
+//   -o-transform: rotate(-30deg);
+//   transform: rotate(-30deg);
+// }
+
+.a {
+  margin: 40px;
+  width: 400px;
+  height: 400px;
+  .border-radius(180px);
+  .gradient-top-left-origin(@blue1, @blue2);
+  .gradient-ms(#3591b6, #6ae8f6);
+  .rotate (-10deg);
+}
+
+.b {
+  width: 400px;
+  height: 400px;
+  .border-radius(5px);
+  .gradient-bottom-left-origin(@yellow1, @yellow2);
+  .gradient-ms(#f1e767, #feb645);
+  // .translate(8em, 18em);
+  .translate(8em, -6.5em);
+}
+
+.c {
+  .equilateral-triangle-pointing-up(200px, @red1);
+  .border-radius(10px);
+  // .skewX(-5deg);
+  .translate(6em, -12.5em);
+}
+
+// .test {
+//   font: 200px/150% Arial, sans-serif;
+//   color: @red1;
+// }
+
+/**/
+/* * * * * * * * * * * * * * * * * * example from www.samuelrossille.com/home/css-shape-generator.html‎ * * * * * * * * * * * * * */
+/**/
+
+// .my-icon {
+//     position: relative;
+// }
+// .my-icon > i {
+//     position: absolute;
+//     display: inline-block;
+//     width: 0;
+//     height: 0;
+//     line-height: 0;
+//     border: 1.5em solid transparent;
+//     margin-top: -5.5em;
+//     border-bottom: 2.5em solid #1142AA;
+//     left: 0em;
+//     top: 0em;
+// }
+
+/**/
+/* * * * * * * * * * * * * * * * * * example from http://codepen.io/thebabydino/pen/cBmxv * * * * * * * * * * * * * */
+/**/
+
+/*.triangle {
+  overflow: hidden;
+  margin: 0 auto;
+  outline: solid 1px red;
+
+  width: 8.66em; height: 10em;
+  transform: rotate(30deg) skewY(30deg);
+}
+.triangle:before {
+  display: block;  to be able to apply width/ height/ transform
+  width: inherit; height: inherit;
+  transform: skewY(-30deg) rotate(60deg) translate(50%);
+
+  background: linear-gradient(red, black);
+  background-size: cover;
+  content: '';
+}*/
+
+/**/
+/* * * * * * * * * * * * * * * * * * example from http://apps.eky.hk/css-triangle-generator/ * * * * * * * * * * * * * */
+/**/
+
+// .triangle {
+//   width: 0px;
+//   height: 0px;
+//   border-style: solid;
+//   border-width: 0 100px 173.2px 100px;
+//   border-color: transparent transparent #f55656 transparent;
+// }

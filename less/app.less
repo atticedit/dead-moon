@@ -1,0 +1,120 @@
+@base: silver;
+
+.translate(@translateX, @translateY) {
+  -webkit-transform:  translate(@translateX, @translateY);
+  -ms-transform:      translate(@translateX, @translateY);
+  transform:          translate(@translateX, @translateY);
+}
+
+.transparent {
+  zoom: 1;
+  filter: alpha(opacity=90);
+  opacity: 0.9;
+}
+
+.shape-position-150px(@image, @x-translation, @y-translation, @z-index) {
+  background-image: url('../images/@{image}');
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+  .translate(@x-translation, @y-translation);
+  position: absolute;
+  z-index : @z-index;
+  .transparent;
+}
+
+// .a {
+//   background-image: url('../images/rc.png');
+//   background-repeat: no-repeat;
+//   width: 100px;
+//   height: 100px;
+//   position: absolute;
+//   z-index : 2;
+// }
+
+// .b {
+//   background-image: url('../images/yc.png');
+//   background-repeat: no-repeat;
+//   width: 100px;
+//   height: 100px;
+//   .translate(1em, 3em);
+//   position: absolute;
+//   z-index : 1;
+// }
+
+.c {
+  .shape-position-150px('bc150.png', 0, 0, 2);
+}
+
+.d {
+  .shape-position-150px('yc150.png', 2em, 4em, 1);
+}
+
+.e {
+  .shape-position-150px('rc150.png', 15em, 0, 2);
+}
+
+.f {
+  .shape-position-150px('bc150.png', 17em, 4em, 1);
+}
+
+.g {
+  .shape-position-150px('yc150.png', 30em, 0, 2);
+}
+
+.h {
+  .shape-position-150px('rc150.png', 32em, 4em, 1);
+}
+
+// second row
+
+.i {
+  .shape-position-150px('yc150.png', 0, 20em, 2);
+}
+
+.j {
+  .shape-position-150px('bc150.png', 2em, 24em, 1);
+}
+
+.k {
+  .shape-position-150px('bc150.png', 15em, 20em, 2);
+}
+
+.l {
+  .shape-position-150px('rc150.png', 17em, 24em, 1);
+}
+
+.m {
+  .shape-position-150px('rc150.png', 30em, 20em, 2);
+}
+
+.n {
+  .shape-position-150px('yc150.png', 32em, 24em, 1);
+}
+
+// third row
+
+.o {
+  .shape-position-150px('bc150.png', 0, 40em, 2);
+}
+
+.p {
+  .shape-position-150px('bc150.png', 2em, 44em, 1);
+}
+
+.q {
+  .shape-position-150px('rc150.png', 15em, 40em, 2);
+}
+
+.r {
+  .shape-position-150px('rc150.png', 17em, 44em, 1);
+}
+
+.s {
+  .shape-position-150px('yc150.png', 30em, 40em, 2);
+}
+
+.t {
+  .shape-position-150px('yc150.png', 32em, 44em, 1);
+}
+

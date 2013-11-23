@@ -1,0 +1,27 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "jade": "*",
+    "express-less": "*",
+    "lodash": "*",
+    "moment": "*",
+    "mongoose": "*",
+    "async": "*",
+    "colors": "*",
+    "request": "*",
+    "require-dir": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-notify": "*",
+    "home-dir": "*"
+  }
+}

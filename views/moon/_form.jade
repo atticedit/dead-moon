@@ -1,0 +1,9 @@
+form#game(action='/moon/start', method='post')
+  fieldset
+    .row
+      mixin field(4, 'text', 'player', null, null, 'Toody', true)
+      .small-2.columns
+        button.radius.success.small.expand(type='submit') Start Game
+
+//- the field mixin expects values in this order:
+//-   colSize, type, name, text, value, placeholder, autofocus
