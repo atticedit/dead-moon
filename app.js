@@ -8,7 +8,7 @@ require('require-dir')('./models');
 var moon = require('./routes/moon');
 var app = express();
 // var RedisStore = require('connect-redis')(express);
-mongoose.connect('mongodb://localhost/name-of-database');
+mongoose.connect('mongodb://localhost/dead-moon');
 
 // configure express
 require('./config').initialize(app/*, RedisStore*/);

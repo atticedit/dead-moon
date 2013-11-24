@@ -1,120 +1,266 @@
-@base: silver;
+/**/
+/* * * cleanup tasks * * * * * * * * * * * * * * * * * * * * * * * */
+/**/
 
-.translate(@translateX, @translateY) {
-  -webkit-transform:  translate(@translateX, @translateY);
-  -ms-transform:      translate(@translateX, @translateY);
-  transform:          translate(@translateX, @translateY);
+// deletions to make:
+
+//   unused fonts in the @import url
+//   unused font-family declarations:
+//     font-family: 'Quicksand', sans-serif;
+//     font-family: 'Roboto Slab', serif;
+//     font-family: 'Lato', sans-serif;
+//   unused colors
+//   commented-out css declarations
+
+// other cleanup:
+
+//   rename colors used
+
+/**/
+/* * * mixins & variable definitions * * * * * * * * * * * * * * * */
+/**/
+
+@import url(http://fonts.googleapis.com/css?family=Lato|Quicksand|Roboto+Slab:100,300);
+
+@grayA: #fafafa;
+@grayB: #f2f2f2;
+@grayC: #e6e6e6;
+@grayD: #d8d8d8;
+@grayE: #bdbdbd;
+@grayF: #a4a4a4;
+@grayG: #848484;
+@grayH: #6e6e6e;
+
+@blueA: #0b2f3a;
+@blueB: #0b173b;
+@blueC: #084b8a;
+@blueD: #0b3861;
+
+.gradient-top-origin(@startColor, @endColor) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
 }
 
-.transparent {
-  zoom: 1;
-  filter: alpha(opacity=90);
-  opacity: 0.9;
+.border-radius(@radius) {
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+  border-radius: @radius;
 }
 
-.shape-position-150px(@image, @x-translation, @y-translation, @z-index) {
-  background-image: url('../images/@{image}');
-  background-repeat: no-repeat;
-  width: 150px;
-  height: 150px;
-  .translate(@x-translation, @y-translation);
-  position: absolute;
-  z-index : @z-index;
-  .transparent;
+/**/
+/* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**/
+
+
+body {
+  height: 1000px;
+  .gradient-top-origin(@grayD, @grayB);
 }
 
-// .a {
-//   background-image: url('../images/rc.png');
-//   background-repeat: no-repeat;
-//   width: 100px;
-//   height: 100px;
-//   position: absolute;
-//   z-index : 2;
+#header {
+  width: 100%;
+  height: 130px;
+  // background-color: @blueB;
+  background-color: @blueA;
+}
+
+h1 {
+  font: 72px/150% 'Roboto Slab', sans-serif;
+  color: @grayB;
+  margin-top: 5px;
+  // text-shadow: -1px -1px 4px white;
+}
+
+fieldset{
+  margin-top: 80px;
+  height: 75px;
+  background-color: @grayD;
+  .border-radius(6px);
+}
+
+#game button, .button{
+  // background-color: @blueC;
+  background-color: lighten(@blueA, 10%);
+  border-width: 0;
+  box-shadow: none;
+  // margin-top: 11px;
+}
+
+#game button:hover, button:focus, .button:hover, .button:focus{
+  // background-color: lighten(@blueC, 7%);
+  background-color: lighten(@blueA, 25%);
+  box-shadow: inset 0 0 24px black;
+}
+
+#run {
+  margin-bottom: 70px;
+  width: 100%;
+  height: 140px;
+  background: @grayE;
+  box-shadow: inset 0 2px 12px @grayH;
+}
+
+.hidden {
+  display: none;
+}
+
+// #hand {
+//   // height: 125px;
+//   text-align: justify;
+//   font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+//   min-width: 900px;
 // }
 
-// .b {
-//   background-image: url('../images/yc.png');
-//   background-repeat: no-repeat;
-//   width: 100px;
-//   height: 100px;
-//   .translate(1em, 3em);
-//   position: absolute;
-//   z-index : 1;
+// #container .card {
+//   // width: 150px;
+//   // height: 125px;
+//   margin: 0 80px 80px 0;
+//   display: inline-block;
+//   // background: red;
+//   box-shadow: 0 0 2px @grayC;
 // }
 
-.c {
-  .shape-position-150px('bc150.png', 0, 0, 2);
+// #hand:after {
+//   content: '';
+//   width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+//   display: inline-block;
+// }
+
+.card {
+  margin: 0 60px 60px 0;
+  box-shadow: 1px 1px 2px @grayE;
 }
 
-.d {
-  .shape-position-150px('yc150.png', 2em, 4em, 1);
+.sprite(@x-offset, @y-offset) {
+  height: 100px;
+ //  width: 70px;
+  width: 100px;
+  background-image: url('../images/moon-sprite-1.png');
+  background-repeat: no-repeat;
+ //  background-position: @x-offset+-15px @y-offset;
+  background-position: (@x-offset * -100px) (@y-offset * -100px);
+  display: inline-block;
 }
 
-.e {
-  .shape-position-150px('rc150.png', 15em, 0, 2);
+.matched {
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0;
+  -webkit-transition: all .8s ease;
+  -moz-transition: all .8s ease;
+  -ms-transition: all .8s ease;
+  -o-transition: all .8s ease;
+  transition: all .8s ease;
 }
 
-.f {
-  .shape-position-150px('bc150.png', 17em, 4em, 1);
-}
+// sprite row 0 (blue top, blue bottom)
 
-.g {
-  .shape-position-150px('yc150.png', 30em, 0, 2);
-}
+.bcbc { .sprite(0, 0); }
+.bcbs { .sprite(1, 0); }
+.bcbt { .sprite(2, 0); }
+.bsbc { .sprite(3, 0); }
+.bsbs { .sprite(4, 0); }
+.bsbt { .sprite(5, 0); }
+.btbc { .sprite(6, 0); }
+.btbs { .sprite(7, 0); }
+.btbt { .sprite(8, 0); }
 
-.h {
-  .shape-position-150px('rc150.png', 32em, 4em, 1);
-}
+// sprite row 1 (blue top, red bottom)
 
-// second row
+.bcrc { .sprite(0, 1); }
+.bcrs { .sprite(1, 1); }
+.bcrt { .sprite(2, 1); }
+.bsrc { .sprite(3, 1); }
+.bsrs { .sprite(4, 1); }
+.bsrt { .sprite(5, 1); }
+.btrc { .sprite(6, 1); }
+.btrs { .sprite(7, 1); }
+.btrt { .sprite(8, 1); }
 
-.i {
-  .shape-position-150px('yc150.png', 0, 20em, 2);
-}
+// sprite row 2 (blue top, yellow bottom)
 
-.j {
-  .shape-position-150px('bc150.png', 2em, 24em, 1);
-}
+.bcyc { .sprite(0, 2); }
+.bcys { .sprite(1, 2); }
+.bcyt { .sprite(2, 2); }
+.bsyc { .sprite(3, 2); }
+.bsys { .sprite(4, 2); }
+.bsyt { .sprite(5, 2); }
+.btyc { .sprite(6, 2); }
+.btys { .sprite(7, 2); }
+.btyt { .sprite(8, 2); }
 
-.k {
-  .shape-position-150px('bc150.png', 15em, 20em, 2);
-}
+// sprite row 3 (red top, blue bottom)
 
-.l {
-  .shape-position-150px('rc150.png', 17em, 24em, 1);
-}
+.rcbc { .sprite(0, 3); }
+.rcbs { .sprite(1, 3); }
+.rcbt { .sprite(2, 3); }
+.rsbc { .sprite(3, 3); }
+.rsbs { .sprite(4, 3); }
+.rsbt { .sprite(5, 3); }
+.rtbc { .sprite(6, 3); }
+.rtbs { .sprite(7, 3); }
+.rtbt { .sprite(8, 3); }
 
-.m {
-  .shape-position-150px('rc150.png', 30em, 20em, 2);
-}
+// sprite row 4 (red top, red bottom)
 
-.n {
-  .shape-position-150px('yc150.png', 32em, 24em, 1);
-}
+.rcrc { .sprite(0, 4); }
+.rcrs { .sprite(1, 4); }
+.rcrt { .sprite(2, 4); }
+.rsrc { .sprite(3, 4); }
+.rsrs { .sprite(4, 4); }
+.rsrt { .sprite(5, 4); }
+.rtrc { .sprite(6, 4); }
+.rtrs { .sprite(7, 4); }
+.rtrt { .sprite(8, 4); }
 
-// third row
+// sprite row 5 (red top, yellow bottom)
 
-.o {
-  .shape-position-150px('bc150.png', 0, 40em, 2);
-}
+.rcyc { .sprite(0, 5); }
+.rcys { .sprite(1, 5); }
+.rcyt { .sprite(2, 5); }
+.rsyc { .sprite(3, 5); }
+.rsys { .sprite(4, 5); }
+.rsyt { .sprite(5, 5); }
+.rtyc { .sprite(6, 5); }
+.rtys { .sprite(7, 5); }
+.rtyt { .sprite(8, 5); }
 
-.p {
-  .shape-position-150px('bc150.png', 2em, 44em, 1);
-}
+// sprite row 6 (yellow top, blue bottom)
 
-.q {
-  .shape-position-150px('rc150.png', 15em, 40em, 2);
-}
+.ycbc { .sprite(0, 6); }
+.ycbs { .sprite(1, 6); }
+.ycbt { .sprite(2, 6); }
+.ysbc { .sprite(3, 6); }
+.ysbs { .sprite(4, 6); }
+.ysbt { .sprite(5, 6); }
+.ytbc { .sprite(6, 6); }
+.ytbs { .sprite(7, 6); }
+.ytbt { .sprite(8, 6); }
 
-.r {
-  .shape-position-150px('rc150.png', 17em, 44em, 1);
-}
+// sprite row 7 (yellow top, red bottom)
 
-.s {
-  .shape-position-150px('yc150.png', 30em, 40em, 2);
-}
+.ycrc { .sprite(0, 7); }
+.ycrs { .sprite(1, 7); }
+.ycrt { .sprite(2, 7); }
+.ysrc { .sprite(3, 7); }
+.ysrs { .sprite(4, 7); }
+.ysrt { .sprite(5, 7); }
+.ytrc { .sprite(6, 7); }
+.ytrs { .sprite(7, 7); }
+.ytrt { .sprite(8, 7); }
 
-.t {
-  .shape-position-150px('yc150.png', 32em, 44em, 1);
-}
+// sprite row 8 (yellow top, yellow bottom)
 
+.ycyc { .sprite(0, 8); }
+.ycys { .sprite(1, 8); }
+.ycyt { .sprite(2, 8); }
+.ysyc { .sprite(3, 8); }
+.ysys { .sprite(4, 8); }
+.ysyt { .sprite(5, 8); }
+.ytyc { .sprite(6, 8); }
+.ytys { .sprite(7, 8); }
+.ytyt { .sprite(8, 8); }

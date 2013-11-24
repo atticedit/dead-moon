@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var Game = mongoose.model('Game');
-var colors = require('colors');
+// var colors = require('colors');
 // var __ = require('lodash');
 
 // Colors
@@ -14,7 +14,7 @@ var colors = require('colors');
 
 exports.index = function(req, res){
   // log the actual text 'moon.index' with the given styling
-  console.log('moon.index'.bold.italic.underline.blue);
+  console.log('moon.index'/*.bold.italic.underline.blue*/);
   // render the html from views/moon/index.jade with the title given
   res.render('moon/index', {title: 'Dead Moon'});
 };
@@ -25,8 +25,9 @@ exports.index = function(req, res){
 
 // when an ajax request is sent using the URL set up in initiateGame in app.js...
 exports.start = function(req, res){
-  console.log('moon.start'.bold.italic.underline.blue);
+  console.log('moon.start'/*.bold.italic.underline.blue*/);
   new Game(req.query).save(function(err, game){
     res.send({hand: game.hand, id: game.id});
+    console.log(game);
   });
 };
