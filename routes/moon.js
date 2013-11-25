@@ -27,7 +27,7 @@ exports.index = function(req, res){
 exports.start = function(req, res){
   console.log('moon.start'/*.bold.italic.underline.blue*/);
   new Game(req.query).save(function(err, game){
-    res.send({hand: game.hand, id: game.id});
+    res.send({hand: game.hand, initial: game.initial, id: game.id});
     console.log(game);
   });
 };

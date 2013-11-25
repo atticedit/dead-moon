@@ -4,10 +4,16 @@ include ../mixins/_field-mixin
 block content
   #header
     .row
-      .small-10.small-centered.columns
+      .small-9.small-centered.columns
         h1 Dead Moon
-        include _form
-  #run.hidden
+  #buffer.hidden
   .row
-    .small-10.small-centered.columns
+    .small-9.small-centered.columns
+      include _form
+  #trough.hidden
+    .row
+      .small-9.small-centered.columns
+        #run
+  .row
+    .small-9.small-centered.columns
       #hand

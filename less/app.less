@@ -30,6 +30,9 @@
 @grayF: #a4a4a4;
 @grayG: #848484;
 @grayH: #6e6e6e;
+@grayI: #585858;
+@grayJ: #424242;
+@grayK: #2e2e2e;
 
 @blueA: #0b2f3a;
 @blueB: #0b173b;
@@ -56,6 +59,10 @@
 /**/
 
 
+.hidden {
+  display: none;
+}
+
 body {
   height: 1000px;
   .gradient-top-origin(@grayD, @grayB);
@@ -66,6 +73,7 @@ body {
   height: 130px;
   // background-color: @blueB;
   background-color: @blueA;
+  // z-index: 2;
 }
 
 h1 {
@@ -73,6 +81,14 @@ h1 {
   color: @grayB;
   margin-top: 5px;
   // text-shadow: -1px -1px 4px white;
+}
+
+#buffer {
+  background-color: @grayD;
+  width: 100%;
+  height: 25px;
+  // z-indez: 1;
+  // box-shadow: 0 5px 30px black;
 }
 
 fieldset{
@@ -96,16 +112,20 @@ fieldset{
   box-shadow: inset 0 0 24px black;
 }
 
-#run {
-  margin-bottom: 70px;
+#trough {
+  margin-bottom: 50px;
   width: 100%;
   height: 140px;
-  background: @grayE;
-  box-shadow: inset 0 2px 12px @grayH;
+  background: @grayG;
+  box-shadow: inset 0 0 30px black;
+  // z-index: 0;
 }
 
-.hidden {
-  display: none;
+.run {
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 6px 6px 6px @grayI;
 }
 
 // #hand {
@@ -131,7 +151,7 @@ fieldset{
 // }
 
 .card {
-  margin: 0 60px 60px 0;
+  margin: 0 40px 40px 0;
   box-shadow: 1px 1px 2px @grayE;
 }
 
