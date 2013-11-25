@@ -1,23 +1,23 @@
 var express = require('express');
 var mongoose = require('mongoose');
 
-// model definitions
+  //* model definitions
 require('require-dir')('./models');
 
-// route definitions
+  //* route definitions
 var moon = require('./routes/moon');
 var app = express();
 // var RedisStore = require('connect-redis')(express);
 mongoose.connect('mongodb://localhost/dead-moon');
 
-// configure express
+  //* configure express
 require('./config').initialize(app/*, RedisStore*/);
 
-// routes
+  //* routes
 app.get('/', moon.index);
 app.post('/moon/start', moon.start);
 
-// start server & socket.io
+  //* start server & socket.io
 // var common = require('./sockets/common');
 var server = require('http').createServer(app);
 // var io = require('socket.io').listen(server, {log: true, 'log level': 2});

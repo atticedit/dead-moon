@@ -54,6 +54,12 @@
   border-radius: @radius;
 }
 
+.translate(@translateX, @translateY) {
+  -webkit-transform:  translate(@translateX, @translateY);
+  -ms-transform:      translate(@translateX, @translateY);
+  transform:          translate(@translateX, @translateY);
+}
+
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
@@ -122,9 +128,7 @@ fieldset{
 }
 
 .run {
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px -29px 20px 0;
   box-shadow: 6px 6px 6px @grayI;
 }
 
@@ -155,6 +159,11 @@ fieldset{
   box-shadow: 1px 1px 2px @grayE;
 }
 
+.card:hover {
+  .translate(0, -3px);
+  box-shadow: 1px 4px 2px @grayF;
+}
+
 .sprite(@x-offset, @y-offset) {
   height: 100px;
  //  width: 70px;
@@ -166,7 +175,7 @@ fieldset{
   display: inline-block;
 }
 
-.matched {
+.picked {
   -webkit-opacity: 0;
   -moz-opacity: 0;
   opacity: 0;
