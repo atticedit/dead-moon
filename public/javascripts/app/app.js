@@ -90,6 +90,9 @@ function htmlAddCardToRun(){
 function htmlUpdateDisplay(){
   var runLength = $('.run').length;
   console.log('Current run: ' + runLength);
+    //* reveal the area that displays length of the player's run
+  $('#runbox').removeClass('hidden');
+  $('#runbox span').text(runLength);
 }
 
 //                                                                    //
