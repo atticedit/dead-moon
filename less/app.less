@@ -77,7 +77,10 @@
   .transition(@timing);
 }
 
-
+.glow {
+  text-shadow: 0 0 12px white;
+  .transition(2s);
+}
 
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -106,10 +109,11 @@ h1 {
   color: @grayB;
   margin-top: 5px;
   text-shadow: 0 0 25px black;
+  .transition(2s);
 }
 
 h1:hover {
-  text-shadow: 0 0 12px white;
+  .glow;
 }
 
 #runbox {
@@ -142,7 +146,7 @@ h1:hover {
   background-color: @grayF;
   width: 100%;
   height: 25px;
-  border-bottom: 1px solid @grayE;
+  border-bottom: 2px solid @grayE;
   // box-shadow: 0 5px 30px black;
 }
 
@@ -164,8 +168,8 @@ fieldset{
 #game button:hover, button:focus, .button:hover, .button:focus{
   // background-color: lighten(@blueC, 7%);
   // background-color: lighten(@blueA, 25%);
-  background-color: orange;
   // box-shadow: inset 0 0 24px black;
+  background-color: orange;
 }
 
 #trough {

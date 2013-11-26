@@ -5,6 +5,7 @@ $(document).ready(initialize);
 function initialize(){
   $(document).foundation();
   $('form#game').on('submit', submitForm);
+  $('#header h1').on('click', htmlIrradiateHeader);
   $('#hand').on('click', '.available', clickCard);
 }
 
@@ -63,28 +64,32 @@ function htmlInitiateGame(game){
 
   //* called by checkForMatch if a match is found
 function htmlAddCardToRun(){
-    //* save the pair code of the matched card
-  var pair = $('.matched').attr('data-pair');
+    //* add a class of 'picked', which fades the card out from its position
+  $('.clicked').addClass('picked');
+    //* remove the class of 'available' to disable further clicks
+  $('.clicked').removeClass('available');
+    //* save the pair code of the clicked card
+  var pair = $('.clicked').attr('data-pair');
     //* create a new card to be added to the run area
   var newRunCard = '<div class="run ' + pair + '" data-pair="' + pair + '"></div>';
     //* add the card to the run area
   $('#run').append(newRunCard);
     //* remove the class of 'clicked' to reset for next click
-  $('.matched').removeClass('clicked');
-    //* remove the class of 'matched' to reset for next match
-  $('.matched').removeClass('matched');
+  $('.clicked').removeClass('clicked');
+  //   //* remove the class of 'matched' to reset for next match
+  // $('.matched').removeClass('matched');
 
   htmlUpdateDisplay();
 
     //* TO DO -- possibly add a graceful animation when card is added to #run
-    //* TO DO -- test if last-child of parent will spotlight the newest card
-    //*          - if not figure out how to make both of the steps below work
-    //*            - add a class of 'newest-match' to the card
-    //*            - remove the class of 'newest-match' from the previous card
 }
 
-  //* called by checkForMatch if a match isn't found
+//   //* called by checkForMatch if a match isn't found
 // function htmlIndicateFailedMatch(){
+//     //* add a class of 'pulse', which quickly fades the card out and in
+//   $('.clicked').addClass('pulse');
+//     //* remove the class of 'clicked' to reset for next click
+//   $('.clicked').removeClass('clicked');
 // }
 
 function htmlUpdateDisplay(){
@@ -92,7 +97,13 @@ function htmlUpdateDisplay(){
   console.log('Current run: ' + runLength);
     //* reveal the area that displays length of the player's run
   $('#runbox').removeClass('hidden');
+    //* set the text to the number of pairs in the run area
   $('#runbox span').text(runLength);
+}
+
+  //* called by the initialize function when the h1 in the header is clicked
+function htmlIrradiateHeader(){
+  $('#header h1').toggleClass('glow');
 }
 
 //                                                                    //
@@ -102,14 +113,15 @@ function htmlUpdateDisplay(){
   //* called by clickCard
 function checkForMatch(){
 
+    //* TO DO -- test if last-child of parent will spotlight the newest card
+    //*          - if not figure out how to make both of the steps below work
+    //*            - add a class of 'newest-match' to the card
+    //*            - remove the class of 'newest-match' from the previous card
+
   // PSEUDOCODE // if there's a match // PSEUDOCODE //
 
-    //* add a class of 'picked', which fades the card out from its position
-  $('.clicked').addClass('picked');
-    //* remove the class of 'available' to disable further clicks
-  $('.clicked').removeClass('available');
-    //* add a class of 'matched' to keep track of the card
-  $('.clicked').addClass('matched');
+  //   //* add a class of 'matched' to keep track of the card
+  // $('.clicked').addClass('matched');
     //* call the function that will update the DOM
   htmlAddCardToRun();
 
