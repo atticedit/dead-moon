@@ -17,25 +17,10 @@ Game.pre('save', function(next){
   while(this.hand.length < 15){
     var pair = __.sample(shapes, 2).join('');
     this.hand.push(pair);
-    __.uniq(this.hand);
+    this.hand =  __.uniq(this.hand);
   }
 
   next();
 });
-
-// START // working version that outputs duplicates // START //
-
-// Game.pre('save', function(next){
-//   if(!this.hand.length){
-//     for(var i = 0; i < 15; i++){
-//       var shapes = ['bc', 'bs', 'bt', 'rc', 'rs', 'rt', 'yc', 'ys', 'yt'];
-//       var pair = __.sample(shapes, 2).join('');
-//       this.hand.push(pair);
-//     }
-//   }
-//   next();
-// });
-
-/// END /// working version that outputs duplicates /// END ///
 
 mongoose.model('Game', Game);

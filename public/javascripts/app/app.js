@@ -17,7 +17,7 @@ function submitForm(e){
   var player = $('input[name="player"]').val();
   var url = '/moon/start?player=' + player;
 
-    //* the sendAjaxRequest function expects values in this order:
+    //* the sendAjaxRequest function expects values in this order
     //*   url, data, verb, altVerb, event, successFn
   sendAjaxRequest(url, {}, 'post', null, e, function(data){
       //* call the function that will update the DOM
@@ -27,6 +27,8 @@ function submitForm(e){
 
   //* called by the initialize function when a dynamically created div is clicked
 function clickCard(){
+    //* remove the class of 'unmatched' from last failed match to reset for next click
+  $('#hand div').removeClass('unmatched');
     //* add a class of 'clicked'
   $(this).addClass('clicked');
     //* call the function that will check for a match
@@ -34,7 +36,7 @@ function clickCard(){
 }
 
 //                                                                    //
-// ------------------------------ html ------------------------------ //
+// ------------------------ DOM manipulation ------------------------ //
 //                                                                    //
 
   //* called by submitForm after the ajax request returns data
@@ -62,10 +64,10 @@ function htmlInitiateGame(game){
   $('#hand').attr('data-id', game.id);
 }
 
-  //* called by checkForMatch if a match is found
+  // * called by checkForMatch if a match is found
 function htmlAddCardToRun(){
-    //* add a class of 'picked', which fades the card out from its position
-  $('.clicked').addClass('picked');
+    //* add a class of 'matched', which fades the card out from its position
+  $('.clicked').addClass('matched');
     //* remove the class of 'available' to disable further clicks
   $('.clicked').removeClass('available');
     //* save the pair code of the clicked card
@@ -74,27 +76,32 @@ function htmlAddCardToRun(){
   var newRunCard = '<div class="run ' + pair + '" data-pair="' + pair + '"></div>';
     //* add the card to the run area
   $('#run').append(newRunCard);
+    //* calculate the number of pairs in the run area
+  var runLength = $('.run').length;
+
+  // PSEUDOCODE // if runLength ... // PSEUDOCODE //
+
     //* remove the class of 'clicked' to reset for next click
   $('.clicked').removeClass('clicked');
   //   //* remove the class of 'matched' to reset for next match
   // $('.matched').removeClass('matched');
 
-  htmlUpdateDisplay();
+  htmlUpdateDisplay(runLength);
 
-    //* TO DO -- possibly add a graceful animation when card is added to #run
+    //* TO DO -- add a graceful animation when card is added to #run
 }
 
 //   //* called by checkForMatch if a match isn't found
 // function htmlIndicateFailedMatch(){
-//     //* add a class of 'pulse', which quickly fades the card out and in
-//   $('.clicked').addClass('pulse');
+//     //* add a class of 'unmatched', which quickly fades the card out and in
+//   $('.clicked').addClass('unmatched');
 //     //* remove the class of 'clicked' to reset for next click
 //   $('.clicked').removeClass('clicked');
+
+//   htmlUpdateDisplay(runLength);
 // }
 
-function htmlUpdateDisplay(){
-  var runLength = $('.run').length;
-  console.log('Current run: ' + runLength);
+function htmlUpdateDisplay(runLength){
     //* reveal the area that displays length of the player's run
   $('#runbox').removeClass('hidden');
     //* set the text to the number of pairs in the run area
