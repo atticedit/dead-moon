@@ -5,7 +5,7 @@ $(document).ready(initialize);
 function initialize(){
   $(document).foundation();
   $('form#game').on('submit', submitForm);
-  $('#hand').on('click', '.card', clickCard);
+  $('#hand').on('click', '.available', clickCard);
 }
 
 //                                                                    //
@@ -54,7 +54,7 @@ function htmlInitiateGame(game){
     //* convert the hand returned by the server to a series of divs, each with class of 'card', a class
     //*   with the code that defines its shapes and colors (for styling purposes), and a data attribute
     //*   called 'pair' with the same code (for targeting purposes)
-  var cards = _.map(game.hand, function(h, i){return '<div class="card ' + game.hand[i] + '" data-pair="' + game.hand[i] + '"></div>';});
+  var cards = _.map(game.hand, function(h, i){return '<div class="available ' + game.hand[i] + '" data-pair="' + game.hand[i] + '"></div>';});
     //* add the card to the hand area
   $('#hand').append(cards);
     //* give the parent div a data attribute of the game id
@@ -89,7 +89,7 @@ function htmlAddCardToRun(){
 
 function htmlUpdateDisplay(){
   var runLength = $('.run').length;
-  console.log(runLength);
+  console.log('Current run: ' + runLength);
 }
 
 //                                                                    //
@@ -103,6 +103,8 @@ function checkForMatch(){
 
     //* add a class of 'picked', which fades the card out from its position
   $('.clicked').addClass('picked');
+    //* remove the class of 'available' to disable further clicks
+  $('.clicked').removeClass('available');
     //* add a class of 'matched' to keep track of the card
   $('.clicked').addClass('matched');
     //* call the function that will update the DOM

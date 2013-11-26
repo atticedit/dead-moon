@@ -16,6 +16,8 @@
 
 //   rename colors used
 
+
+
 /**/
 /* * * mixins & variable definitions * * * * * * * * * * * * * * * */
 /**/
@@ -60,18 +62,31 @@
   transform:          translate(@translateX, @translateY);
 }
 
+.fade (@endOpacity, @timing) {
+  -webkit-opacity: @endOpacity;
+  -moz-opacity: @endOpacity;
+  opacity: @endOpacity;
+  -webkit-transition: all @timing ease;
+  -moz-transition: all @timing ease;
+  -ms-transition: all @timing ease;
+  -o-transition: all @timing ease;
+  transition: all @timing ease;
+}
+
+
+
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
-
 .hidden {
   display: none;
+  // opacity: 0;
 }
 
 body {
   height: 1000px;
-  .gradient-top-origin(@grayD, @grayB);
+  .gradient-top-origin(@grayF, @grayA);
 }
 
 #header {
@@ -89,18 +104,44 @@ h1 {
   // text-shadow: -1px -1px 4px white;
 }
 
+#runbox {
+  position: absolute;
+  top: 63px;
+  right: 12%;
+  width: 185px;
+  height: 32px;
+  background-color: @blueA;
+  // border: 1px solid @grayE;
+  .border-radius(6px);
+  // box-shadow: 0 0 20px @grayK;
+  // .fade(1, .8s);
+
+  p{
+    font: 18px/150% 'RobotoSlab', sans-serif;
+    color: @grayE;
+    // text-align: center;
+    padding-top: 2px;
+
+    span {
+      color: @grayB;
+      font-size: 21px;
+      font-weight: bold;
+    }
+  }
+}
+
 #buffer {
-  background-color: @grayD;
+  background-color: @grayF;
   width: 100%;
   height: 25px;
-  // z-indez: 1;
+  border-bottom: 1px solid @grayA;
   // box-shadow: 0 5px 30px black;
 }
 
 fieldset{
   margin-top: 80px;
   height: 75px;
-  background-color: @grayD;
+  background-color: @grayF;
   .border-radius(6px);
 }
 
@@ -114,54 +155,42 @@ fieldset{
 
 #game button:hover, button:focus, .button:hover, .button:focus{
   // background-color: lighten(@blueC, 7%);
-  background-color: lighten(@blueA, 25%);
-  box-shadow: inset 0 0 24px black;
+  // background-color: lighten(@blueA, 25%);
+  background-color: orange;
+  // box-shadow: inset 0 0 24px black;
 }
 
 #trough {
   margin-bottom: 50px;
   width: 100%;
   height: 140px;
-  background: @grayG;
-  box-shadow: inset 0 0 30px black;
-  // z-index: 0;
+  background-image: url('../images/img-noise-361x370G.png');
+  box-shadow: inset 0 0 30px @grayK;
 }
 
 .run {
-  margin: 20px -29px 20px 0;
-  box-shadow: 6px 6px 6px @grayI;
+  margin: 20px -27px 20px 0;
+  box-shadow: 6px 6px 6px @grayJ;
 }
 
-// #hand {
-//   // height: 125px;
-//   text-align: justify;
-//   font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
-//   min-width: 900px;
-// }
-
-// #container .card {
-//   // width: 150px;
-//   // height: 125px;
-//   margin: 0 80px 80px 0;
-//   display: inline-block;
-//   // background: red;
-//   box-shadow: 0 0 2px @grayC;
-// }
-
-// #hand:after {
-//   content: '';
-//   width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
-//   display: inline-block;
-// }
-
-.card {
+#hand div {
   margin: 0 40px 40px 0;
-  box-shadow: 1px 1px 2px @grayE;
+  box-shadow: 1px 1px 2px @grayF;
+  .border-radius(3px);
 }
 
-.card:hover {
+#hand div:hover {
   .translate(0, -3px);
-  box-shadow: 1px 4px 2px @grayF;
+  box-shadow: 1px 4px 2px @grayG;
+  -webkit-transition: all .1s ease;
+  -moz-transition: all .1s ease;
+  -ms-transition: all .1s ease;
+  -o-transition: all .1s ease;
+  transition: all .1s ease;
+}
+
+.picked {
+  .fade(0, .8s);
 }
 
 .sprite(@x-offset, @y-offset) {
@@ -175,16 +204,11 @@ fieldset{
   display: inline-block;
 }
 
-.picked {
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-  opacity: 0;
-  -webkit-transition: all .8s ease;
-  -moz-transition: all .8s ease;
-  -ms-transition: all .8s ease;
-  -o-transition: all .8s ease;
-  transition: all .8s ease;
-}
+
+
+/**/
+/* * * sprite positioning * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**/
 
 // sprite row 0 (blue top, blue bottom)
 

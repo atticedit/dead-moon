@@ -18,7 +18,6 @@ Game.pre('save', function(next){
     var pair = __.sample(shapes, 2).join('');
     this.hand.push(pair);
     __.uniq(this.hand);
-    console.log(this.hand);
   }
 
   next();
