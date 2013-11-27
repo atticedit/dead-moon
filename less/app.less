@@ -215,22 +215,28 @@ fieldset{
 
 .footprint {
   display: inline-block;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   height: 100px;
   width: 100px;
+  .border-radius(50px);
+  box-shadow: inset 0 0 40px rgba(255,255,255,.15);
+  // border: 5px double rgba(255,255,255,.1);
   // background-color: lighten(desaturate(@blueA, 60%), 40%);
-  background-color: rgba(0,0,0,.015);
+  // background-color: rgba(0,0,0,.007);
   margin: 0 40px 40px 0;
-  box-shadow: 1px 1px 2px rgba(11,47,58,.2);
-  .border-radius(3px);
+  // box-shadow: 1px 1px 2px rgba(11,47,58,.2);
 }
 
 .footprint div {
   box-shadow: 1px 1px 2px @grayF;
+  .translate(-3px, -5px);
   .border-radius(3px);
 }
 
 .footprint div:hover {
-  .translate(0, -3px);
+  .translate(-3px, -8px);
+  // .translate(0, -3px);
   box-shadow: 1px 4px 2px @grayG;
   .transition(.1s);
 }
