@@ -88,10 +88,16 @@
   .transition(.5s);
 }
 
+.black-glow(@blur-radius) {
+  text-shadow: 0 0 @blur-radius black;
+}
+
 .glow {
   text-shadow: 0 0 12px white;
   .transition(2s);
 }
+
+
 
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -102,7 +108,8 @@
 }
 
 body {
-  height: 1000px;
+  height: 100%;
+  min-height: 1000px;
   .gradient-top-origin(@grayF, @grayA);
 }
 
@@ -119,7 +126,7 @@ h1 {
   font: 72px/150% 'Roboto Slab', sans-serif;
   color: @grayB;
   margin-top: 5px;
-  text-shadow: 0 0 25px black;
+  .black-glow(25px);
   .transition(2s);
 }
 
@@ -135,6 +142,7 @@ h1:hover {
   height: 32px;
   background-color: @blueA;
   .border-radius(6px);
+  .black-glow(15px);
     //* fading in with this class currently doesn't work
   // .fade(1, .5s);
 
@@ -205,23 +213,33 @@ fieldset{
   .border-radius(3px);
 }
 
-#hand div {
+.footprint {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  // background-color: lighten(desaturate(@blueA, 60%), 40%);
+  background-color: rgba(0,0,0,.015);
   margin: 0 40px 40px 0;
+  box-shadow: 1px 1px 2px rgba(11,47,58,.2);
+  .border-radius(3px);
+}
+
+.footprint div {
   box-shadow: 1px 1px 2px @grayF;
   .border-radius(3px);
 }
 
-#hand div:hover {
+.footprint div:hover {
   .translate(0, -3px);
   box-shadow: 1px 4px 2px @grayG;
   .transition(.1s);
 }
 
-#hand div.matched {
-  .fade(0, .6s);
+.footprint div.matched {
+  .fade(0, .4s);
 }
 
-#hand div.unmatched {
+.footprint div.unmatched {
   .pulse;
 }
 

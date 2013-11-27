@@ -60,7 +60,7 @@ function htmlInitiateGame(game){
     //* convert the hand returned by the server to a series of divs, each with class of 'available', a class
     //*   with the code that defines its shapes and colors (for styling purposes), and a data attribute
     //*   called 'pair' with the same code (for targeting purposes)
-  var pairs = _.map(game.hand, function(h, i){return '<div class="' + game.hand[i] + ' available" data-pair="' + game.hand[i] + '"></div>';});
+  var pairs = _.map(game.hand, function(h, i){return '<div class="footprint"><div class="' + game.hand[i] + ' available" data-pair="' + game.hand[i] + '"></div></div>';});
     //* add the card to the hand area
   $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
@@ -81,12 +81,12 @@ function htmlAddCardToRun(){
     //* set runWidth to the width of the run area, expressed as a unit-less pixel value
   var runWidth = $('#run').width();
     //* set rightRunMargin to the remaining space in the browser window available to #run
-    //*   after the next match is added
-  var rightRunMargin = windowSize - runPos.left - runWidth - 73;
+  var rightRunMargin = windowSize - runPos.left - runWidth;
 
-    //* determine whether there's less than 10% of available space for #run remaining
-  if(rightRunMargin/windowSize < 0.1){
-      //* decrement runPos.left by 73 in order to shift #run left
+    //* determine whether there's less than 20% of available space for #run remaining
+  if(rightRunMargin/windowSize < 0.2){
+      //* decrement runPos.left by 73, the pixel value a new match card adds to runWidth,
+      //*   in order to shift #run left to accommodate a new card
     runPos.left -= 73;
       //* animate a shift of #run to the left position specified
     $('#run').animate( {'left':runPos.left}, 'slow', function(){} );
