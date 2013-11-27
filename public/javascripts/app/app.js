@@ -1,4 +1,4 @@
-/* global document, sendAjaxRequest */
+/* global document, window, sendAjaxRequest */
 
 $(document).ready(initialize);
 
@@ -73,16 +73,34 @@ function htmlAddCardToRun(){
   $('.clicked').addClass('matched');
     //* remove the class of 'available' to disable further clicks
   $('.clicked').removeClass('available');
+
+    //* get the width of the browser window
+  var windowSize = $(window).width();
+    //* set runPos to the positioning of #run in relation to left and top of the document
+  var runPos = $('#run').offset();
+    //* set runWidth to the width of the run area, expressed as a unit-less pixel value
+  var runWidth = $('#run').width();
+    //* set rightRunMargin to the remaining space in the browser window available to #run
+    //*   after the next match is added
+  var rightRunMargin = windowSize - runPos.left - runWidth - 73;
+
+    //* determine whether there's less than 10% of available space for #run remaining
+  if(rightRunMargin/windowSize < 0.1){
+      //* decrement runPos.left by 73 in order to shift #run left
+    runPos.left -= 73;
+      //* animate a shift of #run to the left position specified
+    $('#run').animate( {'left':runPos.left}, 'slow', function(){} );
+  }
+
+    //* increment runWidth by 73px
+  runWidth += 73;
+    //* set the width of the run area to runWidth
+  $('#run').width(runWidth);
+
     //* save the pair code of the clicked card
   var pair = $('.clicked').attr('data-pair');
     //* create a new card to be added to the run area
   var newRunCard = '<div class="run ' + pair + '" data-pair="' + pair + '"></div>';
-
-    //* set runWidth to 73 plus the width of the run area (expressed as a unit-less pixel value)
-  var runWidth = 73 + ($('#run').width());
-    //* set the width of the run area to runWidth
-  $('#run').width(runWidth);
-
     //* add the card to the run area
   $('#run').append(newRunCard);
     //* calculate the number of pairs in the run area

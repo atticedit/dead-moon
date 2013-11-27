@@ -99,7 +99,6 @@
 
 .hidden {
   display: none;
-  // opacity: 0;
 }
 
 body {
@@ -110,12 +109,13 @@ body {
 #header {
   width: 100%;
   height: 130px;
-  // background-color: @blueB;
   background-color: @blueA;
-  // z-index: 2;
 }
 
 h1 {
+  position: absolute;
+  top: 0;
+  left: 15%;
   font: 72px/150% 'Roboto Slab', sans-serif;
   color: @grayB;
   margin-top: 5px;
@@ -130,19 +130,17 @@ h1:hover {
 #notifier {
   position: absolute;
   top: 63px;
-  right: 12%;
+  right: 15%;
   width: 185px;
   height: 32px;
   background-color: @blueA;
-  // border: 1px solid @grayE;
   .border-radius(6px);
-  // box-shadow: 0 0 20px @grayK;
-  // .fade(1, .8s);
+    //* fading in with this class currently doesn't work
+  // .fade(1, .5s);
 
   p{
     font: 18px/150% 'RobotoSlab', sans-serif;
     color: @grayE;
-    // text-align: center;
     padding-top: 2px;
 
     span {
@@ -193,17 +191,18 @@ fieldset{
 
 #run {
   position: relative;
-  // padding-top: 20px;
   background: @grayC;
   top: 20px;
   left: 10%;
   width: 100px;
   height: 100px;
   box-shadow: 6px 6px 6px @grayJ;
+  .border-radius(3px);
 }
 
 #run div {
   margin-right: -27px;
+  .border-radius(3px);
 }
 
 #hand div {
