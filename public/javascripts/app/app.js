@@ -49,17 +49,20 @@ function htmlInitiateGame(game){
     //* reveal the area below the header for assembling a run
   $('#buffer').removeClass('hidden');
   $('#trough').removeClass('hidden');
-    //* create a div for the initial card to match to
-  var initial = '<div class="run ' + game.initial + '" data-pair="' + game.initial + '"></div>';
+
+    //* extract the first pair from the array
+  var initialPair = game.hand.shift();
+    //* create a div displaying the initial pair to match other cards to
+  var initial = '<div class="run ' + initialPair + '" data-pair="' + initialPair + '"></div>';
     //* add the initial card to the run area
   $('#run').append(initial);
 
     //* convert the hand returned by the server to a series of divs, each with class of 'available', a class
     //*   with the code that defines its shapes and colors (for styling purposes), and a data attribute
     //*   called 'pair' with the same code (for targeting purposes)
-  var cards = _.map(game.hand, function(h, i){return '<div class="' + game.hand[i] + ' available" data-pair="' + game.hand[i] + '"></div>';});
+  var pairs = _.map(game.hand, function(h, i){return '<div class="' + game.hand[i] + ' available" data-pair="' + game.hand[i] + '"></div>';});
     //* add the card to the hand area
-  $('#hand').append(cards);
+  $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
   $('#hand').attr('data-id', game.id);
 }
@@ -88,6 +91,7 @@ function htmlAddCardToRun(){
     //* remove the class of 'clicked' to reset for next click
   $('.clicked').removeClass('clicked');
 
+    //* call the function that will display the current run length
   htmlUpdateDisplay(runLength);
 }
 
@@ -97,12 +101,11 @@ function htmlAddCardToRun(){
 //   $('.clicked').addClass('unmatched');
 //     //* remove the class of 'clicked' to reset for next click
 //   $('.clicked').removeClass('clicked');
-
-//   htmlUpdateDisplay(runLength);
 // }
 
+  //* called by htmlAddCardToRun when a card is added to the run area
 function htmlUpdateDisplay(runLength){
-    //* reveal the area that displays length of the player's run
+    //* reveal the area that displays the length of the player's run
   $('#notifier').removeClass('hidden');
     //* set the text to the number of pairs in the run area
   $('#notifier span').text(runLength);
@@ -127,10 +130,11 @@ function checkForMatch(){
 
   // PSEUDOCODE // if there's a match // PSEUDOCODE //
 
-    //* call the function that will update the DOM
+    //* call the function that will update the DOM with the new matched card
   htmlAddCardToRun();
 
   // PSEUDOCODE // if there's no match // PSEUDOCODE //
 
+    //* call the function that will indicate to the user no match was found
   // htmlIndicateFailedMatch();
 }
