@@ -5,7 +5,7 @@ var Game = mongoose.Schema({
   player      : String,
   hand        : [],
   initial     : String,
-  didWin      : {type: Boolean, default: null},
+  score       : Number,
   // completedAt : Date,
   createdAt   : {type: Date, default: Date.now}
 });
