@@ -35,8 +35,6 @@ function submitForm(e){
 
   //* called by the initialize function when a dynamically created div is clicked
 function clickCard(){
-    //* remove the class of 'unmatched' from last failed match to reset for the next click
-  $('#hand div').removeClass('unmatched');
     //* define clickedCard as the element that received a click
   var clickedCard = $(this);
     // * call the function that will check for a match
@@ -121,6 +119,8 @@ function htmlAddCardToRun(clickedCard, clickedPair){
 function htmlIndicateFailedMatch(clickedCard){
     //* add a class of 'unmatched' to the clicked card, which quickly pulses it
   $(clickedCard).addClass('unmatched');
+    //* after 1 second, remove the class of 'unmatched' to allow further clicks
+  setTimeout(function() { $(clickedCard).removeClass('unmatched') }, 1000);
 }
 
   //* called by htmlAddCardToRun when a card is added to the run area
