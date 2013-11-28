@@ -105,9 +105,31 @@
 //   25%, 75% {opacity: 0.3;}
 // }
 
-  //* derived from animate.css by Dan Edan | https://github.com/daneden/animate.css
-.animated {-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:0.8s;-moz-animation-duration:0.8s;-ms-animation-duration:0.8s;-o-animation-duration:0.8s;animation-duration:0.8s;}.animated.hinge{-webkit-animation-duration:0.8s;-moz-animation-duration:0.8s;-ms-animation-duration:0.8s;-o-animation-duration:0.8s;animation-duration:0.8s;}@-webkit-keyframes flash {
-  0%, 100% {opacity: 1;} 50% {opacity: 0.1;}
+  //* derived from the flash animation in animate.css by Dan Edan | https://github.com/daneden/animate.css
+.animated {
+  -webkit-animation-fill-mode:both;
+  -moz-animation-fill-mode:both;
+  -ms-animation-fill-mode:both;
+  -o-animation-fill-mode:both;
+  animation-fill-mode:both;
+  -webkit-animation-duration:0.8s;
+  -moz-animation-duration:0.8s;
+  -ms-animation-duration:0.8s;
+  -o-animation-duration:0.8s;
+  animation-duration:0.8s;
+}
+
+.animated.hinge {
+  -webkit-animation-duration:0.8s;
+  -moz-animation-duration:0.8s;
+  -ms-animation-duration:0.8s;
+  -o-animation-duration:0.8s;
+  animation-duration:0.8s;
+}
+
+@-webkit-keyframes flash {
+  0%, 100% {opacity: 1;}
+  50% {opacity: 0.1;}
 }
 
 @-moz-keyframes flash {
@@ -125,13 +147,14 @@
   50% {opacity: 0.1;}
 }
 
-  //* derived from the flash animation in animate.css by Dan Edan | https://github.com/daneden/animate.css
 .flash {
   -webkit-animation-name: flash;
   -moz-animation-name: flash;
   -o-animation-name: flash;
   animation-name: flash;
 }
+
+
 
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
