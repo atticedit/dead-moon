@@ -53,14 +53,14 @@ function htmlInitiateGame(game){
     //* extract the first pair from the array
   var initialPair = game.hand.shift();
     //* create a div displaying the initial pair to match other cards to
-  var initial = '<div class="run ' + initialPair + '" data-pair="' + initialPair + '"></div>';
+  var initial = '<div class="run ' + initialPair + '"></div>';
     //* add the initial card to the run area
   $('#run').append(initial);
 
     //* convert the hand returned by the server to a series of divs, each with class of 'available', a class
     //*   with the code that defines its shapes and colors (for styling purposes), and a data attribute
     //*   called 'pair' with the same code (for targeting purposes)
-  var pairs = _.map(game.hand, function(h, i){return '<div class="footprint"><div class="' + game.hand[i] + ' available" data-pair="' + game.hand[i] + '"></div></div>';});
+  var pairs = _.map(game.hand, function(h, i){return '<div class="footprint"><div class="' + game.hand[i] + ' available"></div></div>';});
     //* add the card to the hand area
   $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
@@ -68,7 +68,7 @@ function htmlInitiateGame(game){
 }
 
   // * called by checkForMatch if a match is found
-function htmlAddCardToRun(){
+function htmlAddCardToRun(clickedPair){
     //* add a class of 'matched', which fades the card out from its position
   $('.clicked').addClass('matched');
     //* remove the class of 'available' to disable further clicks
@@ -97,10 +97,8 @@ function htmlAddCardToRun(){
     //* set the width of the run area to runWidth
   $('#run').width(runWidth);
 
-    //* save the pair code of the clicked card
-  var pair = $('.clicked').attr('data-pair');
     //* create a new card to be added to the run area
-  var newRunCard = '<div class="run ' + pair + '" data-pair="' + pair + '"></div>';
+  var newRunCard = '<div class="run ' + clickedPair + '"></div>';
     //* add the card to the run area
   $('#run').append(newRunCard);
     //* calculate the number of pairs in the run area
@@ -119,7 +117,7 @@ function htmlIndicateFailedMatch(){
   // $('.clicked').addClass('unmatched');
     //* remove the class of 'clicked' to reset for next click
   $('.clicked').removeClass('clicked');
-  alert('Sorry, that\'s not a match.');
+  console.log('Sorry, that\'s not a match.');
 }
 
   //* called by htmlAddCardToRun when a card is added to the run area
@@ -142,23 +140,21 @@ function htmlIrradiateHeader(){
 
   //* called by clickCard
 function checkForMatch(){
-  var lastRunCard = $('#run').children().last().attr('class');
-  var lastRunPair = lastRunCard.split(' ').pop();
+  var lastRunPair = $('#run').children().last().attr('class').split(' ').pop();
   // console.log('lastRunPair: ' + lastRunPair);
 
-  var clickedCard = $('.clicked').attr('class');
-  var clickedPair = clickedCard.split(' ').shift();
+  var clickedPair = $('.clicked').attr('class').split(' ').shift();
   // console.log('clickedPair: ' + clickedPair);
 
   if(lastRunPair[0] === clickedPair[0] && lastRunPair[1] === clickedPair[1]){
       //* call the function that will update the DOM with the new matched card
-    htmlAddCardToRun();
+    htmlAddCardToRun(clickedPair);
   } else if(lastRunPair[2] === clickedPair[2] && lastRunPair[3] === clickedPair[3]){
-    htmlAddCardToRun();
+    htmlAddCardToRun(clickedPair);
   } else if(lastRunPair[0] === clickedPair[0] && lastRunPair[2] === clickedPair[2]){
-    htmlAddCardToRun();
+    htmlAddCardToRun(clickedPair);
   } else if(lastRunPair[1] === clickedPair[1] && lastRunPair[3] === clickedPair[3]){
-    htmlAddCardToRun();
+    htmlAddCardToRun(clickedPair);
   } else {
       //* call the function that will indicate to the user no match was found
     htmlIndicateFailedMatch();
