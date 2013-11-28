@@ -121,8 +121,6 @@ function htmlAddCardToRun(clickedCard, clickedPair){
 function htmlIndicateFailedMatch(clickedCard){
     //* add a class of 'unmatched' to the clicked card, which quickly pulses it
   $(clickedCard).addClass('unmatched');
-    //* log the failed match (to be replaced with decent UI later)
-  console.log('Sorry, that\'s not a match.');
 }
 
   //* called by htmlAddCardToRun when a card is added to the run area
