@@ -99,10 +99,6 @@ function htmlAddCardToRun(clickedCard, clickedPair){
       //* animate a shift of #run to the left position specified
     $('#run').animate( {'left':runPos.left}, 'slow', function(){} );
   }
-    //* increment runWidth by 73px
-  runWidth += 73;
-    //* set the width of the run area to runWidth
-  $('#run').width(runWidth);
 
     //* create a new card to be added to the run area
   var newRunCard = '<div class="run ' + clickedPair + '"></div>';
@@ -110,6 +106,11 @@ function htmlAddCardToRun(clickedCard, clickedPair){
   $('#run').append(newRunCard);
     //* calculate the number of pairs in the run area
   var runLength = $('.run').length;
+
+    //* increment runWidth by 73px
+  runWidth += 73;
+    //* set the width of the run area to runWidth
+  $('#run').width(runWidth);
 
     //* call the function that will display the current run length
   htmlUpdateDisplay(runLength);
