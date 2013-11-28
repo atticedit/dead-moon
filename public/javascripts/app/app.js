@@ -113,13 +113,14 @@ function htmlAddCardToRun(){
   htmlUpdateDisplay(runLength);
 }
 
-//   //* called by checkForMatch if a match isn't found
-// function htmlIndicateFailedMatch(){
-//     //* add a class of 'unmatched', which quickly fades the card out and in
-//   $('.clicked').addClass('unmatched');
-//     //* remove the class of 'clicked' to reset for next click
-//   $('.clicked').removeClass('clicked');
-// }
+  //* called by checkForMatch if a match isn't found
+function htmlIndicateFailedMatch(){
+  //   //* add a class of 'unmatched', which quickly fades the card out and in
+  // $('.clicked').addClass('unmatched');
+    //* remove the class of 'clicked' to reset for next click
+  $('.clicked').removeClass('clicked');
+  alert('Sorry, that\'s not a match.');
+}
 
   //* called by htmlAddCardToRun when a card is added to the run area
 function htmlUpdateDisplay(runLength){
@@ -131,6 +132,7 @@ function htmlUpdateDisplay(runLength){
 
   //* called by the initialize function when the h1 in the header is clicked
 function htmlIrradiateHeader(){
+    //* toggle the class that will make the h1 glow
   $('#header h1').toggleClass('glow');
 }
 
@@ -140,19 +142,25 @@ function htmlIrradiateHeader(){
 
   //* called by clickCard
 function checkForMatch(){
+  var lastRunCard = $('#run').children().last().attr('class');
+  var lastRunPair = lastRunCard.split(' ').pop();
+  // console.log('lastRunPair: ' + lastRunPair);
 
-    //* TO DO -- test if last-child of parent will spotlight the newest card
-    //*          - if not figure out how to make both of the steps below work
-    //*            - add a class of 'newest-match' to the card
-    //*            - remove the class of 'newest-match' from the previous card
+  var clickedCard = $('.clicked').attr('class');
+  var clickedPair = clickedCard.split(' ').shift();
+  // console.log('clickedPair: ' + clickedPair);
 
-  // PSEUDOCODE // if there's a match // PSEUDOCODE //
-
-    //* call the function that will update the DOM with the new matched card
-  htmlAddCardToRun();
-
-  // PSEUDOCODE // if there's no match // PSEUDOCODE //
-
-    //* call the function that will indicate to the user no match was found
-  // htmlIndicateFailedMatch();
+  if(lastRunPair[0] === clickedPair[0] && lastRunPair[1] === clickedPair[1]){
+      //* call the function that will update the DOM with the new matched card
+    htmlAddCardToRun();
+  } else if(lastRunPair[2] === clickedPair[2] && lastRunPair[3] === clickedPair[3]){
+    htmlAddCardToRun();
+  } else if(lastRunPair[0] === clickedPair[0] && lastRunPair[2] === clickedPair[2]){
+    htmlAddCardToRun();
+  } else if(lastRunPair[1] === clickedPair[1] && lastRunPair[3] === clickedPair[3]){
+    htmlAddCardToRun();
+  } else {
+      //* call the function that will indicate to the user no match was found
+    htmlIndicateFailedMatch();
+  }
 }
