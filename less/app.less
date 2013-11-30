@@ -186,6 +186,8 @@ body {
   height: 100%;
   min-height: 1000px;
   .gradient-top-origin(@grayF, @grayA);
+  background-image: url('../images/moon.jpg');
+  // background-opacity: 0.5%;
 }
 
 #header {
@@ -245,7 +247,7 @@ fieldset{
   width: 100%;
   height: 200px;
   background-image: url('../images/img-noise-361x370G.png');
-  box-shadow: inset 0 0 30px @grayK;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.7);
 }
 
 #run {
@@ -255,13 +257,13 @@ fieldset{
   left: 25px;
   width: 150px;
   height: 150px;
-  box-shadow: 6px 6px 6px @grayJ;
-  .border-radius(3px);
+  box-shadow: 6px 6px 6px rgba(0,0,0,.3);
+  .border-radius(5px);
 }
 
 #run div {
   margin-right: -40px;
-  .border-radius(3px);
+  .border-radius(5px);
   .animated;
   .fadeIn;
 }
@@ -288,15 +290,15 @@ fieldset{
 }
 
 .footprint div {
-  box-shadow: 1px 1px 2px @grayF;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.7);
   .translate(-3px, -5px);
   .border-radius(3px);
 }
 
 .footprint div:hover {
-  .translate(-3px, -8px);
+  .translate(-3px, -10px);
   // .translate(0, -3px);
-  box-shadow: 1px 4px 2px @grayG;
+  box-shadow: 1px 4px 4px rgba(0,0,0,.7);
   .transition(.1s);
 }
 
