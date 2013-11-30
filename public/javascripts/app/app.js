@@ -73,7 +73,7 @@ function htmlInitiateGame(game){
   $('#hand').attr('data-id', game.id);
     //* add a class of 'cardshadow' to each card, which will add a box-shadow
     //*   added at this stage to avoid the box-shadow appearing before the card does on page load
-  $('.footprint div').addClass('cardshadow');
+  $('.available').addClass('cardshadow');
 }
 
   // * called by checkForMatch if a match is found
