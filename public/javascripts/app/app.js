@@ -66,14 +66,14 @@ function htmlInitiateGame(game){
     //*   to a series of divs, each with class of 'available' and a class with the code that
     //*   defines its shapes and colors for styling purposes (though it can also be used for
     //*   targeting the element rather than weighing each div down with separate data for that)
-  var pairs = _.map(game.hand, function(h, i){return '<div class="footprint"><div class="' + game.hand[i] + ' available"></div></div>';});
+  var pairs = _.map(game.hand, function(h, i){return '<div class="footprint hidden"><div class="' + game.hand[i] + ' available"></div></div>';});
     //* add the card to the hand area
   $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
   $('#hand').attr('data-id', game.id);
-    //* add a class of 'cardshadow' to each card, which will add a box-shadow
-    //*   added at this stage to avoid the box-shadow appearing before the card does on page load
-  $('.available').addClass('cardshadow');
+    //* reveal the footprint
+    //*   this step taken to avoid the box-shadow appearing before the card does on page load
+  $('#footprint').removeClass('hidden');
 }
 
   // * called by checkForMatch if a match is found
