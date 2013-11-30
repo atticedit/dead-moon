@@ -129,6 +129,8 @@
 @blueC: #084b8a;
 @blueD: #0b3861;
 
+@black50: rgba(0,0,0,.5);
+
 .gradient-top-origin(@startColor, @endColor) {
   background-color: @startColor;
   background: -webkit-gradient(        linear, left top, left bottom, from(@startColor), to(@endColor));
@@ -279,38 +281,27 @@ fieldset{
   margin: 0 auto;
 }
 
-.footprint {
+#hand div {
   display: inline-block;
   height: 150px;
   width: 150px;
   margin: 0 35px 40px 0;
-  // -moz-box-sizing: border-box;
-  //      box-sizing: border-box;
-  // .border-radius(50px);
-  // box-shadow: inset 0 0 40px rgba(255,255,255,.15);
-  // border: 5px double rgba(255,255,255,.1);
-  // background-color: lighten(desaturate(@blueA, 60%), 40%);
-  // background-color: rgba(0,0,0,.007);
-  // box-shadow: 1px 1px 2px rgba(11,47,58,.2);
-}
-
-.footprint div {
-  box-shadow: 2px 2px 4px rgba(46,46,46,.7);
+  box-shadow: 2px 2px 4px @black50;
   .translate(-3px, -5px);
   .border-radius(7px);
 }
 
-.footprint div:hover {
-  box-shadow: 1px 8px 4px rgba(46,46,46,.7);
+#hand div:hover {
+  box-shadow: 1px 8px 4px @black50;
   .translate(-3px, -10px);
   .transition(.2s);
 }
 
-.footprint div.matched {
+#hand div.matched {
   .fade(0, .4s);
 }
 
-.footprint div.unmatched {
+#hand div.unmatched {
   .animated;
   .flash;
 }
