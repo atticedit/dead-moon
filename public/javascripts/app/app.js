@@ -53,7 +53,6 @@ function htmlInitiateGame(game){
     //* remove the form from the page
   $('form#game').remove();
     //* reveal the area below the header for assembling a run
-  $('#buffer').removeClass('hidden');
   $('#runscape').removeClass('hidden');
 
     //* extract the first pair from the array
@@ -72,6 +71,9 @@ function htmlInitiateGame(game){
   $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
   $('#hand').attr('data-id', game.id);
+    //* add a class of 'cardshadow' to each card, which will add a box-shadow
+    //*   added at this stage to avoid the box-shadow appearing before the card does on page load
+  $('.footprint div').addClass('cardshadow');
 }
 
   // * called by checkForMatch if a match is found
