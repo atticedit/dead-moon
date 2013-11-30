@@ -93,9 +93,9 @@ function htmlAddCardToRun(clickedCard, clickedPair){
 
     //* determine whether there's less than 20% of available space for #run remaining
   if(rightRunMargin/windowSize < 0.2){
-      //* decrement runPos.left by 73, the pixel value a new match card adds to runWidth,
+      //* decrement runPos.left by 110, the pixel value a new match card adds to runWidth,
       //*   in order to shift #run left to accommodate a new card
-    runPos.left -= 73;
+    runPos.left -= 110;
       //* animate a shift of #run to the left position specified
     $('#run').animate( {'left':runPos.left}, 'slow', function(){} );
   }
@@ -107,8 +107,8 @@ function htmlAddCardToRun(clickedCard, clickedPair){
     //* calculate the number of pairs in the run area
   var runLength = $('.run').length;
 
-    //* increment runWidth by 73px
-  runWidth += 73;
+    //* increment runWidth by 110px
+  runWidth += 110;
     //* set the width of the run area to runWidth
   $('#run').width(runWidth);
 

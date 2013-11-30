@@ -190,17 +190,18 @@ body {
 
 #header {
   width: 100%;
-  height: 130px;
+  height: 82px;
   background-color: @blueA;
 }
 
 h1 {
-  position: absolute;
-  top: 0;
-  left: 15%;
-  font: 72px/150% 'Roboto Slab', sans-serif;
+  text-align: center;
+  font: 44px/150% 'Roboto Slab', sans-serif;
+  // font-weight: bold;
+  letter-spacing: .07em;
   color: @grayB;
-  margin-top: 5px;
+  margin-top: 0;
+  padding-top: 10px;
   .aura(25px, black);
   .transition(2s);
 }
@@ -236,13 +237,13 @@ fieldset{
   // background-color: lighten(@blueC, 7%);
   // background-color: lighten(@blueA, 25%);
   // box-shadow: inset 0 0 24px black;
-  background-color: orange;
+  background-color: yellow;
 }
 
 #runscape {
   margin-bottom: 50px;
   width: 100%;
-  height: 140px;
+  height: 200px;
   background-image: url('../images/img-noise-361x370G.png');
   box-shadow: inset 0 0 30px @grayK;
 }
@@ -250,33 +251,39 @@ fieldset{
 #run {
   position: relative;
   background: @grayC;
-  top: 20px;
-  left: 10%;
-  width: 100px;
-  height: 100px;
+  top: 25px;
+  left: 25px;
+  width: 150px;
+  height: 150px;
   box-shadow: 6px 6px 6px @grayJ;
   .border-radius(3px);
 }
 
 #run div {
-  margin-right: -27px;
+  margin-right: -40px;
   .border-radius(3px);
   .animated;
   .fadeIn;
 }
 
+#hand {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 .footprint {
   display: inline-block;
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
-  height: 100px;
-  width: 100px;
-  .border-radius(50px);
-  box-shadow: inset 0 0 40px rgba(255,255,255,.15);
+  // -moz-box-sizing: border-box;
+  //      box-sizing: border-box;
+  height: 150px;
+  width: 150px;
+  // .border-radius(50px);
+  // box-shadow: inset 0 0 40px rgba(255,255,255,.15);
   // border: 5px double rgba(255,255,255,.1);
   // background-color: lighten(desaturate(@blueA, 60%), 40%);
   // background-color: rgba(0,0,0,.007);
-  margin: 0 40px 40px 0;
+  margin: 0 30px 40px 0;
   // box-shadow: 1px 1px 2px rgba(11,47,58,.2);
 }
 
@@ -303,19 +310,19 @@ fieldset{
 }
 
 .sprite( @x-offset, @y-offset) {
-  height: 100px;
-  width: 100px;
-  background-image: url('../images/moon-sprite-1.png');
-  background-repeat: no-repeat;
-  background-position: (@x-offset * -100px) (@y-offset * -100px);
+  height: 150px;
+  width: 150px;
+  background-image: url('../images/moon-sprite-1_150.png');
+  background-repeat: no-repeat;
+  background-position: (@x-offset * -150px) (@y-offset * -150px);
   display: inline-block;
 }
 
 #notifier {
   position: absolute;
-  top: 184px;
+  top: 132px;
   right: 5%;
-  font: 52px/150% 'Lato', sans-serif;
+  font: 64px/150% 'Lato', sans-serif;
   color: @grayB;
   .aura(28px, white);
   // text-shadow: 6px 6px 6px @grayJ;
