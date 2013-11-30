@@ -1,5 +1,5 @@
 /**/
-/* * * cleanup tasks * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * cleanup tasks * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
 // deletions to make:
@@ -19,96 +19,7 @@
 
 
 /**/
-/* * * mixins & variable definitions * * * * * * * * * * * * * * * */
-/**/
-
-@import url(http://fonts.googleapis.com/css?family=Lato|Quicksand|Roboto+Slab:100,300);
-
-@grayA: #fafafa;
-@grayB: #f2f2f2;
-@grayC: #e6e6e6;
-@grayD: #d8d8d8;
-@grayE: #bdbdbd;
-@grayF: #a4a4a4;
-@grayG: #848484;
-@grayH: #6e6e6e;
-@grayI: #585858;
-@grayJ: #424242;
-@grayK: #2e2e2e;
-
-@blueA: #0b2f3a;
-@blueB: #0b173b;
-@blueC: #084b8a;
-@blueD: #0b3861;
-
-.gradient-top-origin(@startColor, @endColor) {
-  background-color: @startColor;
-  background: -webkit-gradient(        linear, left top, left bottom, from(@startColor), to(@endColor));
-  background: -webkit-linear-gradient( top, @startColor, @endColor);
-  background: -moz-linear-gradient(    top, @startColor, @endColor);
-  background: -ms-linear-gradient(     top, @startColor, @endColor);
-  background: -o-linear-gradient(      top, @startColor, @endColor);
-}
-
-.border-radius(@radius) {
-  -moz-border-radius   : @radius;
-  -webkit-border-radius: @radius;
-  border-radius        : @radius;
-}
-
-.translate(@translateX, @translateY) {
-  -webkit-transform:  translate(@translateX, @translateY);
-  -ms-transform:      translate(@translateX, @translateY);
-  transform:          translate(@translateX, @translateY);
-}
-
-.transition(@timing) {
-  -webkit-transition: all @timing ease;
-  -moz-transition   : all @timing ease;
-  -ms-transition    : all @timing ease;
-  -o-transition     : all @timing ease;
-  transition        : all @timing ease;
-}
-
-.fade(@endOpacity, @timing) {
-  -webkit-opacity: @endOpacity;
-  -moz-opacity   : @endOpacity;
-  opacity        : @endOpacity;
-  .transition(@timing);
-}
-
-.black-glow(@blur-radius) {
-  text-shadow: 0 0 @blur-radius black;
-}
-
-.glow {
-  text-shadow: 0 0 12px white;
-  .transition(2s);
-}
-
-// .animated {-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}.animated.hinge{-webkit-animation-duration:1s;-moz-animation-duration:1s;-ms-animation-duration:1s;-o-animation-duration:1s;animation-duration:1s;}@-webkit-keyframes flash {
-//   0%, 50%, 100% {opacity: 1;} 25%, 75% {opacity: 0.3;}
-// }
-
-// @-moz-keyframes flash {
-//   0%, 50%, 100% {opacity: 1;}
-//   25%, 75% {opacity: 0.3;}
-// }
-
-// @-o-keyframes flash {
-//   0%, 50%, 100% {opacity: 1;}
-//   25%, 75% {opacity: 0.3;}
-// }
-
-// @keyframes flash {
-//   0%, 50%, 100% {opacity: 1;}
-//   25%, 75% {opacity: 0.3;}
-// }
-
-
-
-/**/
-/* * * animations from animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * animations from animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
 .animated {
@@ -192,8 +103,79 @@
 }
 
 
+
 /**/
-/* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * mixins & variable definitions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**/
+
+@import url(http://fonts.googleapis.com/css?family=Lato|Quicksand|Roboto+Slab:100,300);
+
+@grayA: #fafafa;
+@grayB: #f2f2f2;
+@grayC: #e6e6e6;
+@grayD: #d8d8d8;
+@grayE: #bdbdbd;
+@grayF: #a4a4a4;
+@grayG: #848484;
+@grayH: #6e6e6e;
+@grayI: #585858;
+@grayJ: #424242;
+@grayK: #2e2e2e;
+
+@blueA: #0b2f3a;
+@blueB: #0b173b;
+@blueC: #084b8a;
+@blueD: #0b3861;
+
+.gradient-top-origin(@startColor, @endColor) {
+  background-color: @startColor;
+  background: -webkit-gradient(        linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient( top, @startColor, @endColor);
+  background: -moz-linear-gradient(    top, @startColor, @endColor);
+  background: -ms-linear-gradient(     top, @startColor, @endColor);
+  background: -o-linear-gradient(      top, @startColor, @endColor);
+}
+
+.border-radius(@radius) {
+  -moz-border-radius   : @radius;
+  -webkit-border-radius: @radius;
+  border-radius        : @radius;
+}
+
+.translate(@translateX, @translateY) {
+  -webkit-transform:  translate(@translateX, @translateY);
+  -ms-transform:      translate(@translateX, @translateY);
+  transform:          translate(@translateX, @translateY);
+}
+
+.transition(@timing) {
+  -webkit-transition: all @timing ease;
+  -moz-transition   : all @timing ease;
+  -ms-transition    : all @timing ease;
+  -o-transition     : all @timing ease;
+  transition        : all @timing ease;
+}
+
+.fade(@endOpacity, @timing) {
+  -webkit-opacity: @endOpacity;
+  -moz-opacity   : @endOpacity;
+  opacity        : @endOpacity;
+  .transition(@timing);
+}
+
+.aura(@blur-radius, @color) {
+  text-shadow: 0 0 @blur-radius @color;
+}
+
+.glow {
+  text-shadow: 0 0 12px white;
+  .transition(2s);
+}
+
+
+
+/**/
+/* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
 .hidden {
@@ -219,37 +201,12 @@ h1 {
   font: 72px/150% 'Roboto Slab', sans-serif;
   color: @grayB;
   margin-top: 5px;
-  .black-glow(25px);
+  .aura(25px, black);
   .transition(2s);
 }
 
 h1:hover {
   .glow;
-}
-
-#notifier {
-  position: absolute;
-  top: 63px;
-  right: 15%;
-  width: 185px;
-  height: 32px;
-  background-color: @blueA;
-  .border-radius(6px);
-  .black-glow(15px);
-    //* fading in with this class currently doesn't work
-  // .fade(1, .5s);
-
-  p{
-    font: 18px/150% 'RobotoSlab', sans-serif;
-    color: @grayE;
-    padding-top: 2px;
-
-    span {
-      color: @grayB;
-      font-size: 21px;
-      font-weight: bold;
-    }
-  }
 }
 
 #buffer {
@@ -282,7 +239,7 @@ fieldset{
   background-color: orange;
 }
 
-#trough {
+#runscape {
   margin-bottom: 50px;
   width: 100%;
   height: 140px;
@@ -347,22 +304,32 @@ fieldset{
 
 .sprite( @x-offset, @y-offset) {
   height: 100px;
- //  width: 70px;
   width: 100px;
   background-image: url('../images/moon-sprite-1.png');
   background-repeat: no-repeat;
- //  background-position: @x-offset+-15px @y-offset;
   background-position: (@x-offset * -100px) (@y-offset * -100px);
   display: inline-block;
+}
+
+#notifier {
+  position: absolute;
+  top: 184px;
+  right: 5%;
+  font: 52px/150% 'Lato', sans-serif;
+  color: @grayB;
+  .aura(28px, white);
+  // text-shadow: 6px 6px 6px @grayJ;
+  .animated;
+  .fadeIn;
 }
 
 
 
 /**/
-/* * * sprite positioning * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * sprite positioning * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
-// sprite row 0 (blue top, blue bottom)
+//   sprite row 0  //  blue top, blue bottom  //
 
 .bcbc {.sprite( 0, 0 );}
 .bcbs {.sprite( 1, 0 );}
@@ -374,7 +341,7 @@ fieldset{
 .btbs {.sprite( 7, 0 );}
 .btbt {.sprite( 8, 0 );}
 
-// sprite row 1 (blue top, red bottom)
+//  sprite row 1  //  blue top, red bottom  //
 
 .bcrc {.sprite( 0, 1 );}
 .bcrs {.sprite( 1, 1 );}
@@ -386,7 +353,7 @@ fieldset{
 .btrs {.sprite( 7, 1 );}
 .btrt {.sprite( 8, 1 );}
 
-// sprite row 2 (blue top, yellow bottom)
+//  sprite row 2  //  blue top, yellow bottom  //
 
 .bcyc {.sprite( 0, 2 );}
 .bcys {.sprite( 1, 2 );}
@@ -398,7 +365,7 @@ fieldset{
 .btys {.sprite( 7, 2 );}
 .btyt {.sprite( 8, 2 );}
 
-// sprite row 3 (red top, blue bottom)
+//  sprite row 3  //  red top, blue bottom  //
 
 .rcbc {.sprite( 0, 3 );}
 .rcbs {.sprite( 1, 3 );}
@@ -410,7 +377,7 @@ fieldset{
 .rtbs {.sprite( 7, 3 );}
 .rtbt {.sprite( 8, 3 );}
 
-// sprite row 4 (red top, red bottom)
+//  sprite row 4  //  red top, red bottom  //
 
 .rcrc {.sprite( 0, 4 );}
 .rcrs {.sprite( 1, 4 );}
@@ -422,7 +389,7 @@ fieldset{
 .rtrs {.sprite( 7, 4 );}
 .rtrt {.sprite( 8, 4 );}
 
-// sprite row 5 (red top, yellow bottom)
+//  sprite row 5  //  red top, yellow bottom  //
 
 .rcyc {.sprite( 0, 5 );}
 .rcys {.sprite( 1, 5 );}
@@ -434,7 +401,7 @@ fieldset{
 .rtys {.sprite( 7, 5 );}
 .rtyt {.sprite( 8, 5 );}
 
-// sprite row 6 (yellow top, blue bottom)
+//  sprite row 6  //  yellow top, blue bottom  //
 
 .ycbc {.sprite( 0, 6 );}
 .ycbs {.sprite( 1, 6 );}
@@ -446,7 +413,7 @@ fieldset{
 .ytbs {.sprite( 7, 6 );}
 .ytbt {.sprite( 8, 6 );}
 
-// sprite row 7 (yellow top, red bottom)
+//  sprite row 7  //  yellow top, red bottom  //
 
 .ycrc {.sprite( 0, 7 );}
 .ycrs {.sprite( 1, 7 );}
@@ -458,7 +425,7 @@ fieldset{
 .ytrs {.sprite( 7, 7 );}
 .ytrt {.sprite( 8, 7 );}
 
-// sprite row 8 (yellow top, yellow bottom)
+//  sprite row 8  //  yellow top, yellow bottom  //
 
 .ycyc {.sprite( 0, 8 );}
 .ycys {.sprite( 1, 8 );}

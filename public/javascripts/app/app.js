@@ -54,7 +54,7 @@ function htmlInitiateGame(game){
   $('form#game').remove();
     //* reveal the area below the header for assembling a run
   $('#buffer').removeClass('hidden');
-  $('#trough').removeClass('hidden');
+  $('#runscape').removeClass('hidden');
 
     //* extract the first pair from the array
   var initialPair = game.hand.shift();
@@ -126,10 +126,8 @@ function htmlIndicateFailedMatch(clickedCard){
 
   //* called by htmlAddCardToRun when a card is added to the run area
 function htmlUpdateDisplay(runLength){
-    //* reveal the area that displays the length of the player's run
-  $('#notifier').removeClass('hidden');
     //* set the text to the number of pairs in the run area
-  $('#notifier span').text(runLength);
+  $('#notifier').text(runLength);
 }
 
   //* called by the initialize function when the h1 in the header is clicked
