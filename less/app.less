@@ -10,7 +10,9 @@
 //     font-family: 'Roboto Slab', serif;
 //     font-family: 'Lato', sans-serif;
 //   unused colors
+//   unused animate.css classes
 //   commented-out css declarations
+//   .aura as a mixin if it's only used once
 
 // other cleanup:
 
@@ -136,6 +138,15 @@
   background: -o-linear-gradient(      top, @startColor, @endColor);
 }
 
+.gradient-left-origin(@startColor, @endColor) {
+  background-color: @startColor;
+  background: -webkit-gradient(        linear, left bottom, right bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient( left, @startColor, @endColor);
+  background: -moz-linear-gradient(    left, @startColor, @endColor);
+  background: -ms-linear-gradient(     left, @startColor, @endColor);
+  background: -o-linear-gradient(      left, @startColor, @endColor);
+}
+
 .border-radius(@radius) {
   -moz-border-radius   : @radius;
   -webkit-border-radius: @radius;
@@ -185,15 +196,15 @@
 body {
   height: 100%;
   min-height: 1000px;
-  .gradient-top-origin(@grayF, @grayA);
   background-image: url('../images/moon.jpg');
   // background-opacity: 0.5%;
+  // .gradient-top-origin(@grayF, @grayA);
 }
 
 #header {
   width: 100%;
   height: 82px;
-  background-color: @blueA;
+  .gradient-left-origin(@blueA, lighten(@blueA, 15%))
 }
 
 h1 {
@@ -204,46 +215,39 @@ h1 {
   color: @grayB;
   margin-top: 0;
   padding-top: 10px;
-  .aura(25px, black);
   .transition(2s);
+  .aura(15px, black);
 }
 
 h1:hover {
   .glow;
 }
 
-#buffer {
-  background-color: @grayF;
-  width: 100%;
-  height: 25px;
-  border-bottom: 2px solid @grayE;
-  // box-shadow: 0 5px 30px black;
-}
-
 fieldset{
-  margin-top: 80px;
+  margin-top: 125px;
   height: 75px;
   background-color: @grayF;
+  box-shadow: 0 0 100px black;
   .border-radius(6px);
 }
 
-#game button, .button{
-  // background-color: @blueC;
+#game button{
   background-color: lighten(@blueA, 10%);
   border-width: 0;
   box-shadow: none;
+  // background-color: @blueC;
   // margin-top: 11px;
 }
 
-#game button:hover, button:focus, .button:hover, .button:focus{
+#game button:hover, button:focus{
+  background-color: yellow;
   // background-color: lighten(@blueC, 7%);
   // background-color: lighten(@blueA, 25%);
   // box-shadow: inset 0 0 24px black;
-  background-color: yellow;
 }
 
 #runscape {
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   width: 100%;
   height: 200px;
   background-image: url('../images/img-noise-361x370G.png');
@@ -258,12 +262,12 @@ fieldset{
   width: 150px;
   height: 150px;
   box-shadow: 6px 6px 6px rgba(0,0,0,.3);
-  .border-radius(5px);
+  .border-radius(7px);
 }
 
 #run div {
   margin-right: -40px;
-  .border-radius(5px);
+  .border-radius(7px);
   .animated;
   .fadeIn;
 }
@@ -276,30 +280,30 @@ fieldset{
 
 .footprint {
   display: inline-block;
-  // -moz-box-sizing: border-box;
-  //      box-sizing: border-box;
   height: 150px;
   width: 150px;
+  margin: 0 35px 40px 0;
+  // -moz-box-sizing: border-box;
+  //      box-sizing: border-box;
   // .border-radius(50px);
   // box-shadow: inset 0 0 40px rgba(255,255,255,.15);
   // border: 5px double rgba(255,255,255,.1);
   // background-color: lighten(desaturate(@blueA, 60%), 40%);
   // background-color: rgba(0,0,0,.007);
-  margin: 0 30px 40px 0;
   // box-shadow: 1px 1px 2px rgba(11,47,58,.2);
 }
 
 .footprint div {
   box-shadow: 2px 2px 4px rgba(0,0,0,.7);
   .translate(-3px, -5px);
-  .border-radius(3px);
+  .border-radius(7px);
 }
 
 .footprint div:hover {
   .translate(-3px, -10px);
   // .translate(0, -3px);
-  box-shadow: 1px 4px 4px rgba(0,0,0,.7);
-  .transition(.1s);
+  box-shadow: 1px 8px 4px rgba(0,0,0,.5);
+  .transition(.2s);
 }
 
 .footprint div.matched {
@@ -325,6 +329,7 @@ fieldset{
   top: 132px;
   right: 5%;
   font: 64px/150% 'Lato', sans-serif;
+  font-weight: bold;
   color: @grayB;
   .aura(28px, white);
   // text-shadow: 6px 6px 6px @grayJ;
