@@ -129,7 +129,7 @@ function htmlUpdateDisplay(runLength){
     //* set the text to the number of pairs in the run area
   $('#notifier').text(runLength);
     //* check if all cards have been matched
-  if(runLength === 3){
+  if(runLength === 16){
       //* call the function that handles all win behavior
     htmlIndicateWin();
   }
@@ -142,16 +142,12 @@ function htmlIrradiateHeader(){
 }
 
 function htmlIndicateWin(){
-    //* after an interval long enough for routine animations to conclude and a short additional
-    //*   pause, add a class of 'winFade' to the run, which will fade it out slowly
-  // setTimeout(function() { $('#run').addClass('winFade'); }, 1400);
-  // clearTimeout(timeout);
-  // setTimeout(function() { $('#run').css('.animated').css('.fadeIn'); }, 1400);
-
-  setTimeout(function() { $('#run').addClass('winSlide1'); }, 1400);
-
-    // * add a class of 'winSlide' to the run, which will make it slide in from the right
-  setTimeout(function() { $('#run').addClass('winSlide2'); }, 1600);
+    //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
+    //*   pause, add a class of 'slideOutLeft' to the run, which will slide it off the left edge
+  setTimeout(function() { $('#run').addClass('slideOutLeft'); }, 1400);
+    //* after an interval that will allow slideOutLeft to conclude even if the browser is
+    //*   full-screen, add a class of 'slideInRight' the run, which will slide it in from the right
+  setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
 }
 
 //                                                                    //
