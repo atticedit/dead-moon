@@ -13,6 +13,7 @@
 //   unused animate.css classes
 //   commented-out css declarations
 //   .aura as a mixin if it's only used once
+//   .fade's variables if it's only used with the same values
 
 // other cleanup:
 
@@ -23,6 +24,52 @@
 /**/
 /* * * animations from animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * */
 /**/
+
+
+.animatedSlide() {
+  -webkit-animation-fill-mode:both;
+  -moz-animation-fill-mode:both;
+  -ms-animation-fill-mode:both;
+  -o-animation-fill-mode:both;
+  animation-fill-mode:both;
+  -webkit-animation-duration:0.8s;
+  -moz-animation-duration:0.8s;
+  -ms-animation-duration:0.8s;
+  -o-animation-duration:0.8s;
+  animation-duration:0.8s;
+}
+
+.animatedSlide.hinge {
+  -webkit-animation-duration:0.8s;
+  -moz-animation-duration:0.8s;
+  -ms-animation-duration:0.8s;
+  -o-animation-duration:0.8s;
+  animation-duration:0.8s;
+}
+
+@-webkit-keyframes slideOutLeft {0% {opacity: 1; -webkit-transform: translateX(0);} 100% {-webkit-transform: translateX(-2000px);}}
+@-moz-keyframes slideOutLeft {0% {opacity: 1; -moz-transform: translateX(0);} 100% {-moz-transform: translateX(-2000px);}}
+@-o-keyframes slideOutLeft {0% {opacity: 1; -o-transform: translateX(0); } 100% {-o-transform: translateX(-2000px);}}
+@keyframes slideOutLeft {0% {opacity: 1; transform: translateX(0);} 100% {transform: translateX(-2000px);}}
+
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  -moz-animation-name: slideOutLeft;
+  -o-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+}
+
+@-webkit-keyframes slideInRight {0% {opacity: 0; -webkit-transform: translateX(2000px);} 100% {-webkit-transform: translateX(0);}}
+@-moz-keyframes slideInRight {0% {opacity: 0; -moz-transform: translateX(2000px);} 100% {-moz-transform: translateX(0);}}
+@-o-keyframes slideInRight {0% {opacity: 0; -o-transform: translateX(2000px); } 100% {-o-transform: translateX(0);}}
+@keyframes slideInRight {0% {opacity: 0; transform: translateX(2000px);} 100% {transform: translateX(0);}}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  -moz-animation-name: slideInRight;
+  -o-animation-name: slideInRight;
+  animation-name: slideInRight;
+}
 
 .animated {
   -webkit-animation-fill-mode:both;
@@ -46,9 +93,9 @@
 }
 
 @-webkit-keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-@-moz-keyframes flash { 0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+@-moz-keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
 @-o-keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-@keyframes flash { 0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+@keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
 
 .flash {
   -webkit-animation-name: flash;
@@ -129,6 +176,8 @@
 @blueC: #084b8a;
 @blueD: #0b3861;
 
+@yellow: #f4d11e;
+
 @black50: rgba(0,0,0,.5);
 
 .gradient-top-origin(@startColor, @endColor) {
@@ -185,8 +234,6 @@
   .transition(2s);
 }
 
-
-
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
@@ -242,7 +289,7 @@ fieldset{
 }
 
 #game button:hover, button:focus{
-  background-color: yellow;
+  background-color: @yellow;
   // background-color: lighten(@blueC, 7%);
   // background-color: lighten(@blueA, 25%);
   // box-shadow: inset 0 0 24px black;
@@ -252,7 +299,7 @@ fieldset{
   margin-bottom: 80px;
   width: 100%;
   height: 200px;
-  background-image: url('../images/runscape.png');
+  background-image: url('../images/runscape.jpg');
   background-size: cover;
   box-shadow: inset 0 0 30px rgba(0,0,0,.7);
 }
@@ -266,6 +313,7 @@ fieldset{
   height: 150px;
   box-shadow: 6px 6px 6px rgba(0,0,0,.3);
   .border-radius(7px);
+  // .animatedSlide;
 }
 
 #run div {
@@ -273,6 +321,20 @@ fieldset{
   .border-radius(7px);
   .animated;
   .fadeIn;
+}
+
+#run.winFade {
+  .fade(0, .4s);
+}
+
+#run.winSlide1 {
+  .animatedSlide;
+  .slideOutLeft;
+}
+
+#run.winSlide2 {
+  .animatedSlide;
+  .slideInRight;
 }
 
 #hand {
@@ -301,7 +363,7 @@ fieldset{
   .fade(0, .4s);
 }
 
-#hand div.unmatched {
+#hand div.unmatched, #run.unmatched {
   .animated;
   .flash;
 }

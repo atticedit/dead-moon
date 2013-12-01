@@ -1,4 +1,4 @@
-/* global document, window, sendAjaxRequest */
+/* global document, window, setTimeout, sendAjaxRequest */
 
 $(document).ready(initialize);
 
@@ -121,19 +121,37 @@ function htmlIndicateFailedMatch(clickedCard){
     //* add a class of 'unmatched' to the clicked card, which quickly pulses it
   $(clickedCard).addClass('unmatched');
     //* after 1 second, remove the class of 'unmatched' to allow further clicks
-  setTimeout(function() { $(clickedCard).removeClass('unmatched') }, 1000);
+  setTimeout(function() { $(clickedCard).removeClass('unmatched'); }, 1000);
 }
 
   //* called by htmlAddCardToRun when a card is added to the run area
 function htmlUpdateDisplay(runLength){
     //* set the text to the number of pairs in the run area
   $('#notifier').text(runLength);
+    //* check if all cards have been matched
+  if(runLength === 3){
+      //* call the function that handles all win behavior
+    htmlIndicateWin();
+  }
 }
 
   //* called by the initialize function when the h1 in the header is clicked
 function htmlIrradiateHeader(){
     //* toggle the class that will make the h1 glow
   $('#header h1').toggleClass('glow');
+}
+
+function htmlIndicateWin(){
+    //* after an interval long enough for routine animations to conclude and a short additional
+    //*   pause, add a class of 'winFade' to the run, which will fade it out slowly
+  // setTimeout(function() { $('#run').addClass('winFade'); }, 1400);
+  // clearTimeout(timeout);
+  // setTimeout(function() { $('#run').css('.animated').css('.fadeIn'); }, 1400);
+
+  setTimeout(function() { $('#run').addClass('winSlide1'); }, 1400);
+
+    // * add a class of 'winSlide' to the run, which will make it slide in from the right
+  setTimeout(function() { $('#run').addClass('winSlide2'); }, 1600);
 }
 
 //                                                                    //
