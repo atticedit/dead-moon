@@ -4,11 +4,11 @@ $(document).ready(initialize);
 
 function initialize(){
   $(document).foundation();
-    //* set the function to be called when the form submit button is clicked
+    //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
-    //* set the function to be called when the h1 in the header is clicked
+    //* call the htmlIrradiateHeader function when the h1 in the header is clicked
   $('#header h1').on('click', htmlIrradiateHeader);
-    //* set the function to be called when a child of #hand with class of 'available' is clicked
+    //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
 }
 
@@ -50,6 +50,8 @@ function clickCard(){
   //* exports.start used this line to tell the server what data it should send back:
   //*   res.send({hand: game.hand, initial: game.initial, id: game.id});
 function htmlInitiateGame(game){
+    //* slowly reveal the button that will restart a game
+  setTimeout(function() { $('#restart').removeClass('hidden').addClass('fadeIn'); }, 1000);
     //* remove the form from the page
   $('form#game').remove();
     //* reveal the area below the header for assembling a run
@@ -142,17 +144,32 @@ function htmlIrradiateHeader(){
 }
 
 function htmlIndicateWin(){
+    //* trigger a modal notifying the player of a win
+  setTimeout(function() { $('#winModal').foundation('reveal', 'open'); }, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
     //*   pause, add a class of 'slideOutLeft' to the run, which will slide it off the left edge
   setTimeout(function() { $('#run').addClass('slideOutLeft'); }, 1400);
     //* after an interval that will allow slideOutLeft to conclude even if the browser is
-    //*   full-screen, add a class of 'slideInRight' the run, which will slide it in from the right
+    //*   full-screen, add a class of 'slideInRight' to the run, which will slide it in from the right
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
+
 }
 
 //                                                                    //
 // --------------------------- evaluations -------------------------- //
 //                                                                    //
+
+//   //*** FOR TESTING ONLY ***
+//   //*
+//   //* called by clickCard
+//   //*
+//   //* disables matching requirements
+// function noCheckForMatch(clickedCard){
+//     //* define clickedPair as the pair code of the clicked card
+//   var clickedPair = $(clickedCard).attr('class').split(' ').shift();
+//     //* call the function that will update the DOM with the new card
+//   htmlAddCardToRun(clickedCard, clickedPair);
+// }
 
   //* called by clickCard
 function checkForMatch(clickedCard){
