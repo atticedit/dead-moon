@@ -4,8 +4,8 @@ include ../mixins/_field-mixin
 block content
   #header
     h1 Dead Moon
+    #demo.button.small.radius Enter Demo Mode
     #restart.button.small.radius.hidden Start New Game
-    a(href="#", id="tutorial", data-reveal-id="tutorialModal", class="radius button small")  View Tutorial
   #notifier
   .row
     .small-9.small-centered.columns
@@ -13,9 +13,6 @@ block content
   #runscape.hidden
     #run
   #hand.hidden
-  div(id="tutorialModal", class="xlarge reveal-modal gray-gradient", data-reveal, style="height: 900px; text-align: center; top: 115px;")
-    h2 How to play
-    a.close-reveal-modal &#215;
   div(id="winModal", class="small reveal-modal brilliant", data-reveal, style="height: 350px; text-align: center; top: 370px;")
     h2 Hot damn, you matched all 16 cards!
     a.close-reveal-modal &#215;

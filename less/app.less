@@ -285,19 +285,18 @@
   display: none;
 }
 
-#header a#tutorial {
+#demo, #restart {
   position: absolute;
   top: 64px;
+  .animated;
+}
+
+#demo {
   right: 30px;
-  width: 126px;
 }
 
 #restart {
-  position: absolute;
-  top: 64px;
-  right: 176px;
-  // width: 120px;
-  .animated;
+  right: 186px;
 }
 
 .reveal-modal-bg {
@@ -308,16 +307,36 @@
   border-radius: 7px;
   border-width: 0;
 
+  h2, h3 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: normal;
+    line-height: 150%;
+    color: @blueE;
+  }
+
   h2 {
-    font: 56px/150% 'Roboto Slab', sans-serif;
-    color: lighten(@blueB, 20%);
+    font-size: 56px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 32px;
+    padding-top: 20px;
+  }
+
+  h6 {
+    font: 32px/100% 'Gudea', sans-serif;
+  }
+
+  p {
+    font: 24px/120% 'Gudea', sans-serif;
   }
 }
 
 body {
   height: 100%;
   min-height: 1000px;
-  background-image: url('../images/moon.jpg');
+  background-image: url('../images/moonB.jpg');
 }
 
 #header {
@@ -352,7 +371,7 @@ fieldset {
   // .border-radius(6px);
 }
 
-#game button, #header a.button, #restart {
+#game button, #header a.button, #demo, #restart {
   // background-color: lighten(@blueA, 10%);
   background-color: @blueF;
   // .gradient-left-origin(@blueF, @blueG);
@@ -365,7 +384,7 @@ fieldset {
   background-color: @redB;
 }
 
-#game button:hover, #header a.button:hover, #restart:hover, #game button:focus, #header a.button:focus, #restart:focus {
+#game button:hover, #header a.button:hover, #demo:hover, #restart:hover, #game button:focus, #header a.button:focus, #demo:focus, #restart:focus {
   // .gradient-left-origin(@yellow, yellow);
   background-color: @yellow;
 }

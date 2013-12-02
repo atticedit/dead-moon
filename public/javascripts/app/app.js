@@ -9,7 +9,7 @@ function initialize(){
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
     //* call the enterDemoMode function when the h1 in the header is clicked
-  $('#header h1').on('click', prepareDemoMode);
+  $('#demo').on('click', prepareDemoMode);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
     //* call the restartGame function when the restart game button is clicked
@@ -47,7 +47,7 @@ function prepareDemoMode(){
     //* define game for purposes of the demo mode
   var game = {};
     //* define game.hand with an array of pairs each matching the one following it
-  game.hand = [ 'bcrs', 'ycys', 'ycyc', 'bcyc', 'bsys', 'ysrs', 'ytrs', 'ytbs', 'rtbs', 'ycbs', 'ycrt', 'bcrt', 'bcrc', 'rcbc', 'rcys', 'rsyc' ];
+  game.hand = [ 'btrs', 'btyc', 'rsyc', 'rcyt', 'bcrt', 'bsrs', 'ytrs', 'ytbs', 'rtbs', 'ycbs', 'ycrt', 'bcrt', 'bcrc', 'rcbc', 'rcys', 'rsyc' ];
     //* define game.id as 'demo-mode'
   game.id = 'demo-mode';
     //* call the function that will update the DOM
