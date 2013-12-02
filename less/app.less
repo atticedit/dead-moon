@@ -181,7 +181,7 @@
 /* * * mixins & variable definitions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
-@import url(http://fonts.googleapis.com/css?family=Lato|Nixie+One|Quicksand|Roboto+Slab:100,300);
+@import url(http://fonts.googleapis.com/css?family=Lato|Gudea|Nixie+One|Quicksand|Roboto+Slab:100,300);
 
 @grayA: #fafafa;
 @grayB: #f2f2f2;
@@ -205,7 +205,8 @@
 
 @yellow: #f4d11e;
 
-@red: #fc0000;
+@redA: #fc0000;
+@redB: #ff5933;
 
 @grayD90: rgba(216,216,216,.9);
 @grayG90: rgba(132,132,132,.9);
@@ -288,12 +289,14 @@
   position: absolute;
   top: 64px;
   right: 30px;
+  width: 126px;
 }
 
 #restart {
   position: absolute;
   top: 64px;
-  right: 170px;
+  right: 186px;
+  // width: 120px;
   .animated;
 }
 
@@ -303,10 +306,11 @@
 
 .reveal-modal {
   border-radius: 7px;
+  border-width: 0;
 
   h2 {
-    font: 56px/150% 'Nixie One', sans-serif;
-    color: @blueA;
+    font: 56px/150% 'Roboto Slab', sans-serif;
+    color: @blueB;
   }
 }
 
@@ -356,20 +360,25 @@ fieldset {
   box-shadow: none;
 }
 
+
+#restart {
+  background-color: @redB;
+}
+
 #game button:hover, #header a.button:hover, #restart:hover, #game button:focus, #header a.button:focus, #restart:focus {
   // .gradient-left-origin(@yellow, yellow);
   background-color: @yellow;
 }
 
 #header a.button, #restart {
-  font: 14px/150% 'Lato', sans-serif;
-  line-height: 70%;
+  font: 16px/150% 'Gudea', sans-serif;
+  line-height: 55%;
   height: 30px;
 }
 
 #game input, #game button {
   height: 60px;
-  font: 24px/150% 'Lato', sans-serif;
+  font: 24px/150% 'Gudea', sans-serif;
   .border-radius(5px);
 }
 

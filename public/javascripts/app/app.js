@@ -8,12 +8,14 @@ function initialize(){
   $(document).foundation();
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
-    //* call the htmlIrradiateHeader function when the h1 in the header is clicked
-  $('#header h1').on('click', htmlIrradiateHeader);
+  //   //* call the htmlIrradiateHeader function when the h1 in the header is clicked
+  // $('#header h1').on('click', htmlIrradiateHeader);
+    //* call the enterDemoMode function when the h1 in the header is clicked
+  $('#header h1').on('click', enterDemoMode);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
     //* call the restartGame function when the restart game button is clicked
-  $('#restart').on('click', htmlRestartGame);
+  $('#restart').on('click', restartGame);
 }
 
 //                                                                    //
@@ -40,12 +42,32 @@ function submitForm(e){
   });
 }
 
+  //* called by the initialize function when the h1 in the header is clicked
+function enterDemoMode(){
+    //* call the function that will reset the board for a new game
+  htmlClearGame();
+
+  var game = {};
+  game.hand = [ 'btyc', 'btrs', 'btys', 'btbs', 'bcbs', 'bcbt', 'ycbt', 'rcyt', 'rcbc', 'rtbc', 'bsbc', 'bsyc', 'ytyc', 'ytrt', 'ysrc', 'ysyt' ];
+  game.id = 0;
+  htmlInitiateGame(game);
+}
+
   //* called by the initialize function when a dynamically created div is clicked
 function clickCard(){
     //* define clickedCard as the element that received a click
   var clickedCard = $(this);
     // * call the function that will check for a match
   checkForMatch(clickedCard);
+}
+
+  //* called by the initialize function when the restart game button is clicked
+function restartGame(){
+    //* call the function that will reset the board for a new game
+  htmlClearGame();
+    //* after a short pause, call the function that will
+    //*   send the ajax request to populate the game board
+  setTimeout(function() { submitForm(); }, 300);
 }
 
 //                                                                    //
@@ -155,15 +177,16 @@ function htmlUpdateDisplay(runLength){
   }
 }
 
-  //* called by the initialize function when the h1 in the header is clicked
-function htmlIrradiateHeader(){
-    //* toggle the class that will make the h1 glow
-  $('#header h1').toggleClass('glow');
-}
+//   //* called by the initialize function when the h1 in the header is clicked
+// function htmlIrradiateHeader(){
+//     //* toggle the class that will make the h1 glow
+//   $('#header h1').toggleClass('glow');
+// }
 
 function htmlIndicateWin(){
+  // $('#winModal').attr('data-player', player);
     //* trigger a modal notifying the player of a win
-  setTimeout(function() { $('#winModal').foundation('reveal', 'open'); }, 800);
+  setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
     //*   pause, add a class of 'slideOutLeft' to the run, which will slide it off the left edge
   setTimeout(function() { $('#run').addClass('slideOutLeft'); }, 1400);
@@ -172,8 +195,8 @@ function htmlIndicateWin(){
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
 }
 
-  //* called by the initialize function when the restart game button is clicked
-function htmlRestartGame(){
+  //* called by the restartGame and enterDemoMode functions
+function htmlClearGame(){
     //* remove classes from the run that may have been added by the htmlIndicateWin function
   $('#run').removeClass('slideInRight').removeClass('slideOutLeft');
 
@@ -193,10 +216,6 @@ function htmlRestartGame(){
   $('#hand').removeClass('fadeIn');
     //* clear the hand of all cards
   $('#hand').empty();
-
-    //* after a short pause, call the function that will
-    //*   send the ajax request to populate the game board
-  setTimeout(function() { submitForm(); }, 300);
 }
 
 //                                                                    //
