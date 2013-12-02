@@ -1,183 +1,4 @@
 /**/
-/* * * cleanup tasks * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-/**/
-
-// deletions to make:
-
-//   unused fonts in the @import url
-//   unused font-family declarations:
-//     font-family: 'Quicksand', sans-serif;
-//     font-family: 'Roboto Slab', serif;
-//     font-family: 'Lato', sans-serif;
-//   unused colors
-//   unused animate.css classes
-//   commented-out css declarations
-//   .aura as a mixin if it's only used once
-//   .fade's variables if it's only used with the same values
-
-// other cleanup:
-
-//   rename colors used
-
-
-
-/**/
-/* * * animations based on animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * */
-/**/
-
-
-.animatedSlide {
-  -webkit-animation-fill-mode:both;
-  -moz-animation-fill-mode:   both;
-  -ms-animation-fill-mode:    both;
-  -o-animation-fill-mode:     both;
-  animation-fill-mode:        both;
-  -webkit-animation-duration: 4s;
-  -moz-animation-duration:    4s;
-  -ms-animation-duration:     4s;
-  -o-animation-duration:      4s;
-  animation-duration:         4s;
-}
-
-.animatedSlide.hinge {
-  -webkit-animation-duration: 4s;
-  -moz-animation-duration:    4s;
-  -ms-animation-duration:     4s;
-  -o-animation-duration:      4s;
-  animation-duration:         4s;
-}
-
-// @-webkit-keyframes slide {0% {opacity: 1; -webkit-transform: translateX(0);} 45% {-webkit-transform: translateX(-2000px);} 50% {opacity: 0; -webkit-transform: translateX(2000px);} 55% {opacity: 1; -webkit-transform: translateX(1500px);} 100% {-webkit-transform: translateX(0);}}
-// @-moz-keyframes    slide {0% {opacity: 1; -webkit-transform: translateX(0);} 45% {-webkit-transform: translateX(-2000px);} 50% {opacity: 0; -webkit-transform: translateX(2000px);} 55% {opacity: 1; -webkit-transform: translateX(1500px);} 100% {-webkit-transform: translateX(0);}}
-// @-o-keyframes      slide {0% {opacity: 1; -webkit-transform: translateX(0);} 45% {-webkit-transform: translateX(-2000px);} 50% {opacity: 0; -webkit-transform: translateX(2000px);} 55% {opacity: 1; -webkit-transform: translateX(1500px);} 100% {-webkit-transform: translateX(0);}}
-// @keyframes         slide {0% {opacity: 1; -webkit-transform: translateX(0);} 45% {-webkit-transform: translateX(-2000px);} 50% {opacity: 0; -webkit-transform: translateX(2000px);} 55% {opacity: 1; -webkit-transform: translateX(1500px);} 100% {-webkit-transform: translateX(0);}}
-
-// .slider {
-//   -webkit-animation-name: slide;
-//   -moz-animation-name:    slide;
-//   -o-animation-name:      slide;
-//   animation-name:         slide;
-// }
-
-@-webkit-keyframes slideOutLeft {0% {opacity: 1; -webkit-transform: translateX(0);} 100% {-webkit-transform: translateX(-2000px);}}
-@-moz-keyframes slideOutLeft    {0% {opacity: 1; -moz-transform: translateX(0);}    100% {-moz-transform:    translateX(-2000px);}}
-@-o-keyframes slideOutLeft      {0% {opacity: 1; -o-transform: translateX(0);}      100% {-o-transform:      translateX(-2000px);}}
-@keyframes slideOutLeft         {0% {opacity: 1; transform: translateX(0);}         100% {transform:         translateX(-2000px);}}
-
-.slideOutLeft {
-  -webkit-animation-name: slideOutLeft;
-  -moz-animation-name:    slideOutLeft;
-  -o-animation-name:      slideOutLeft;
-  animation-name:         slideOutLeft;
-}
-
-@-webkit-keyframes slideInRight {0% {opacity: 1; -webkit-transform: translateX(2000px);} 100% {-webkit-transform: translateX(0);}}
-@-moz-keyframes slideInRight    {0% {opacity: 1; -moz-transform:    translateX(2000px);} 100% {-moz-transform:    translateX(0);}}
-@-o-keyframes slideInRight      {0% {opacity: 1; -o-transform:      translateX(2000px);} 100% {-o-transform:      translateX(0);}}
-@keyframes slideInRight         {0% {opacity: 1; transform:         translateX(2000px);} 100% {transform:         translateX(0);}}
-
-.slideInRight {
-  -webkit-animation-name: slideInRight;
-  -moz-animation-name:    slideInRight;
-  -o-animation-name:      slideInRight;
-  animation-name:         slideInRight;
-}
-
-.animated {
-  -webkit-animation-fill-mode:both;
-  -moz-animation-fill-mode:   both;
-  -ms-animation-fill-mode:    both;
-  -o-animation-fill-mode:     both;
-  animation-fill-mode:        both;
-  -webkit-animation-duration: 0.8s;
-  -moz-animation-duration:    0.8s;
-  -ms-animation-duration:     0.8s;
-  -o-animation-duration:      0.8s;
-  animation-duration:         0.8s;
-}
-
-.animated.hinge {
-  -webkit-animation-duration: 0.8s;
-  -moz-animation-duration:    0.8s;
-  -ms-animation-duration:     0.8s;
-  -o-animation-duration:      0.8s;
-  animation-duration:         0.8s;
-}
-
-@-webkit-keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-@-moz-keyframes flash    {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-@-o-keyframes flash      {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-@keyframes flash         {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
-
-.flash {
-  -webkit-animation-name: flash;
-  -moz-animation-name:    flash;
-  -o-animation-name:      flash;
-  animation-name:         flash;
-}
-
-@-webkit-keyframes fadeInLeft {0% {opacity: 0; -webkit-transform: translateX(-20px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
-@-moz-keyframes fadeInLeft    {0% {opacity: 0; -moz-transform:    translateX(-20px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
-@-o-keyframes fadeInLeft      {0% {opacity: 0; -o-transform:      translateX(-20px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
-@keyframes fadeInLeft         {0% {opacity: 0; transform:         translateX(-20px);} 100% {opacity: 1; transform:         translateX(0);}}
-
-.fadeInLeft {
-  -webkit-animation-name: fadeInLeft;
-  -moz-animation-name:    fadeInLeft;
-  -o-animation-name:      fadeInLeft;
-  animation-name:         fadeInLeft;
-}
-
-@-webkit-keyframes fadeOut {0% {opacity: 1;} 100% {opacity: 0;}}
-@-moz-keyframes fadeOut    {0% {opacity: 1;} 100% {opacity: 0;}}
-@-o-keyframes fadeOut      {0% {opacity: 1;} 100% {opacity: 0;}}
-@keyframes fadeOut         {0% {opacity: 1;} 100% {opacity: 0;}}
-
-.fadeOut {
-  -webkit-animation-name: fadeOut;
-  -moz-animation-name:    fadeOut;
-  -o-animation-name:      fadeOut;
-  animation-name:         fadeOut;
-}
-
-@-webkit-keyframes fadeIn {0% {opacity: 0;} 100% {opacity: 1;}}
-@-moz-keyframes fadeIn    {0% {opacity: 0;} 100% {opacity: 1;}}
-@-o-keyframes fadeIn      {0% {opacity: 0;} 100% {opacity: 1;}}
-@keyframes fadeIn         {0% {opacity: 0;} 100% {opacity: 1;}}
-
-.fadeIn {
-  -webkit-animation-name: fadeIn;
-  -moz-animation-name:    fadeIn;
-  -o-animation-name:      fadeIn;
-  animation-name:         fadeIn;
-}
-
-@-webkit-keyframes fadeInRight {0% {opacity: 0; -webkit-transform: translateX(20px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
-@-moz-keyframes fadeInRight    {0% {opacity: 0; -moz-transform:    translateX(20px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
-@-o-keyframes fadeInRight      {0% {opacity: 0; -o-transform:      translateX(20px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
-@keyframes fadeInRight         {0% {opacity: 0; transform:         translateX(20px);} 100% {opacity: 1; transform:         translateX(0);}}
-
-.fadeInRight {
-  -webkit-animation-name: fadeInRight;
-  -moz-animation-name:    fadeInRight;
-  -o-animation-name:      fadeInRight;
-  animation-name:         fadeInRight;
-}
-@-webkit-keyframes fadeInRightBig {0% {opacity: 0; -webkit-transform: translateX(2000px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
-@-moz-keyframes fadeInRightBig    {0% {opacity: 0; -moz-transform:    translateX(2000px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
-@-o-keyframes fadeInRightBig      {0% {opacity: 0; -o-transform:      translateX(2000px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
-@keyframes fadeInRightBig         {0% {opacity: 0; transform:         translateX(2000px);} 100% {opacity: 1; transform:         translateX(0);}}
-
-.fadeInRightBig {
-  -webkit-animation-name: fadeInRightBig;
-  -moz-animation-name:    fadeInRightBig;
-  -o-animation-name:      fadeInRightBig;
-  animation-name:         fadeInRightBig;
-}
-
-
-
-/**/
 /* * * mixins & variable definitions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
@@ -342,15 +163,12 @@ body {
 #header {
   width: 100%;
   height: 132px;
-  // .gradient-left-origin(#800080, lighten(@blueA, 20%))
 }
 
 h1 {
   text-align: center;
   font: 58px/150% 'Nixie One', sans-serif;
-  // font-weight: bold;
   letter-spacing: .07em;
-  // color: @yellow;
   color: @grayB;
   margin-top: 0;
   padding-top: 30px;
@@ -365,16 +183,11 @@ h1:hover {
 fieldset {
   background-color: rgba(0,0,0,0);
   margin-top: 120px;
-  // height: 106px;
-  // .gradient-top-origin(@grayB, @grayD);
   border-width: 0;
-  // .border-radius(6px);
 }
 
 #game button, #header a.button, #demo, #restart {
-  // background-color: lighten(@blueA, 10%);
   background-color: @blueF;
-  // .gradient-left-origin(@blueF, @blueG);
   border-width: 0;
   box-shadow: none;
 }
@@ -385,7 +198,6 @@ fieldset {
 }
 
 #game button:hover, #header a.button:hover, #demo:hover, #restart:hover, #game button:focus, #header a.button:focus, #demo:focus, #restart:focus {
-  // .gradient-left-origin(@yellow, yellow);
   background-color: @yellow;
 }
 
@@ -600,3 +412,146 @@ fieldset {
 .ytyc {.sprite( 6, 8 );}
 .ytys {.sprite( 7, 8 );}
 .ytyt {.sprite( 8, 8 );}
+
+
+
+/**/
+/* * * animations based on animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * */
+/**/
+
+.animatedSlide {
+  -webkit-animation-fill-mode:both;
+  -moz-animation-fill-mode:   both;
+  -ms-animation-fill-mode:    both;
+  -o-animation-fill-mode:     both;
+  animation-fill-mode:        both;
+  -webkit-animation-duration: 4s;
+  -moz-animation-duration:    4s;
+  -ms-animation-duration:     4s;
+  -o-animation-duration:      4s;
+  animation-duration:         4s;
+}
+
+.animatedSlide.hinge {
+  -webkit-animation-duration: 4s;
+  -moz-animation-duration:    4s;
+  -ms-animation-duration:     4s;
+  -o-animation-duration:      4s;
+  animation-duration:         4s;
+}
+
+@-webkit-keyframes slideOutLeft {0% {opacity: 1; -webkit-transform: translateX(0);} 100% {-webkit-transform: translateX(-2000px);}}
+@-moz-keyframes slideOutLeft    {0% {opacity: 1; -moz-transform: translateX(0);}    100% {-moz-transform:    translateX(-2000px);}}
+@-o-keyframes slideOutLeft      {0% {opacity: 1; -o-transform: translateX(0);}      100% {-o-transform:      translateX(-2000px);}}
+@keyframes slideOutLeft         {0% {opacity: 1; transform: translateX(0);}         100% {transform:         translateX(-2000px);}}
+
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  -moz-animation-name:    slideOutLeft;
+  -o-animation-name:      slideOutLeft;
+  animation-name:         slideOutLeft;
+}
+
+@-webkit-keyframes slideInRight {0% {opacity: 1; -webkit-transform: translateX(2000px);} 100% {-webkit-transform: translateX(0);}}
+@-moz-keyframes slideInRight    {0% {opacity: 1; -moz-transform:    translateX(2000px);} 100% {-moz-transform:    translateX(0);}}
+@-o-keyframes slideInRight      {0% {opacity: 1; -o-transform:      translateX(2000px);} 100% {-o-transform:      translateX(0);}}
+@keyframes slideInRight         {0% {opacity: 1; transform:         translateX(2000px);} 100% {transform:         translateX(0);}}
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  -moz-animation-name:    slideInRight;
+  -o-animation-name:      slideInRight;
+  animation-name:         slideInRight;
+}
+
+.animated {
+  -webkit-animation-fill-mode:both;
+  -moz-animation-fill-mode:   both;
+  -ms-animation-fill-mode:    both;
+  -o-animation-fill-mode:     both;
+  animation-fill-mode:        both;
+  -webkit-animation-duration: 0.8s;
+  -moz-animation-duration:    0.8s;
+  -ms-animation-duration:     0.8s;
+  -o-animation-duration:      0.8s;
+  animation-duration:         0.8s;
+}
+
+.animated.hinge {
+  -webkit-animation-duration: 0.8s;
+  -moz-animation-duration:    0.8s;
+  -ms-animation-duration:     0.8s;
+  -o-animation-duration:      0.8s;
+  animation-duration:         0.8s;
+}
+
+@-webkit-keyframes flash {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+@-moz-keyframes flash    {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+@-o-keyframes flash      {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+@keyframes flash         {0%, 100% {opacity: 1;} 50% {opacity: 0.1;}}
+
+.flash {
+  -webkit-animation-name: flash;
+  -moz-animation-name:    flash;
+  -o-animation-name:      flash;
+  animation-name:         flash;
+}
+
+@-webkit-keyframes fadeInLeft {0% {opacity: 0; -webkit-transform: translateX(-20px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
+@-moz-keyframes fadeInLeft    {0% {opacity: 0; -moz-transform:    translateX(-20px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
+@-o-keyframes fadeInLeft      {0% {opacity: 0; -o-transform:      translateX(-20px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
+@keyframes fadeInLeft         {0% {opacity: 0; transform:         translateX(-20px);} 100% {opacity: 1; transform:         translateX(0);}}
+
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name:    fadeInLeft;
+  -o-animation-name:      fadeInLeft;
+  animation-name:         fadeInLeft;
+}
+
+@-webkit-keyframes fadeOut {0% {opacity: 1;} 100% {opacity: 0;}}
+@-moz-keyframes fadeOut    {0% {opacity: 1;} 100% {opacity: 0;}}
+@-o-keyframes fadeOut      {0% {opacity: 1;} 100% {opacity: 0;}}
+@keyframes fadeOut         {0% {opacity: 1;} 100% {opacity: 0;}}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  -moz-animation-name:    fadeOut;
+  -o-animation-name:      fadeOut;
+  animation-name:         fadeOut;
+}
+
+@-webkit-keyframes fadeIn {0% {opacity: 0;} 100% {opacity: 1;}}
+@-moz-keyframes fadeIn    {0% {opacity: 0;} 100% {opacity: 1;}}
+@-o-keyframes fadeIn      {0% {opacity: 0;} 100% {opacity: 1;}}
+@keyframes fadeIn         {0% {opacity: 0;} 100% {opacity: 1;}}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  -moz-animation-name:    fadeIn;
+  -o-animation-name:      fadeIn;
+  animation-name:         fadeIn;
+}
+
+@-webkit-keyframes fadeInRight {0% {opacity: 0; -webkit-transform: translateX(20px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
+@-moz-keyframes fadeInRight    {0% {opacity: 0; -moz-transform:    translateX(20px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
+@-o-keyframes fadeInRight      {0% {opacity: 0; -o-transform:      translateX(20px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
+@keyframes fadeInRight         {0% {opacity: 0; transform:         translateX(20px);} 100% {opacity: 1; transform:         translateX(0);}}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  -moz-animation-name:    fadeInRight;
+  -o-animation-name:      fadeInRight;
+  animation-name:         fadeInRight;
+}
+@-webkit-keyframes fadeInRightBig {0% {opacity: 0; -webkit-transform: translateX(2000px);} 100% {opacity: 1; -webkit-transform: translateX(0);}}
+@-moz-keyframes fadeInRightBig    {0% {opacity: 0; -moz-transform:    translateX(2000px);} 100% {opacity: 1; -moz-transform:    translateX(0);}}
+@-o-keyframes fadeInRightBig      {0% {opacity: 0; -o-transform:      translateX(2000px);} 100% {opacity: 1; -o-transform:      translateX(0);}}
+@keyframes fadeInRightBig         {0% {opacity: 0; transform:         translateX(2000px);} 100% {opacity: 1; transform:         translateX(0);}}
+
+.fadeInRightBig {
+  -webkit-animation-name: fadeInRightBig;
+  -moz-animation-name:    fadeInRightBig;
+  -o-animation-name:      fadeInRightBig;
+  animation-name:         fadeInRightBig;
+}

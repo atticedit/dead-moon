@@ -186,7 +186,7 @@ function htmlUpdateDisplay(runLength){
 }
 
 function htmlIndicateWin(){
-  // $('#winModal').attr('data-player', player);
+  $('#winMessage').text('Hot damn, ' + player + ', you matched all 16 cards!');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
