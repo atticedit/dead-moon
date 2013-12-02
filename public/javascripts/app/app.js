@@ -8,8 +8,6 @@ function initialize(){
   $(document).foundation();
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
-  //   //* call the htmlIrradiateHeader function when the h1 in the header is clicked
-  // $('#header h1').on('click', htmlIrradiateHeader);
     //* call the enterDemoMode function when the h1 in the header is clicked
   $('#header h1').on('click', enterDemoMode);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
@@ -46,10 +44,13 @@ function submitForm(e){
 function enterDemoMode(){
     //* call the function that will reset the board for a new game
   htmlClearGame();
-
+    //* define game for purposes of the demo mode
   var game = {};
+    //* define game.hand with an array of pairs each matching the one following it
   game.hand = [ 'btyc', 'btrs', 'btys', 'btbs', 'bcbs', 'bcbt', 'ycbt', 'rcyt', 'rcbc', 'rtbc', 'bsbc', 'bsyc', 'ytyc', 'ytrt', 'ysrc', 'ysyt' ];
-  game.id = 0;
+    //* define game.id as 'demo-mode'
+  game.id = 'demo-mode';
+      //* call the function that will update the DOM
   htmlInitiateGame(game);
 }
 
@@ -176,12 +177,6 @@ function htmlUpdateDisplay(runLength){
     htmlIndicateWin();
   }
 }
-
-//   //* called by the initialize function when the h1 in the header is clicked
-// function htmlIrradiateHeader(){
-//     //* toggle the class that will make the h1 glow
-//   $('#header h1').toggleClass('glow');
-// }
 
 function htmlIndicateWin(){
   // $('#winModal').attr('data-player', player);
