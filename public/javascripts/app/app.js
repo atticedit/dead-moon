@@ -2,6 +2,8 @@
 
 $(document).ready(initialize);
 
+var player;
+
 function initialize(){
   $(document).foundation();
     //* call the submitForm function when the form submit button is clicked
@@ -10,6 +12,8 @@ function initialize(){
   $('#header h1').on('click', htmlIrradiateHeader);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
+    //* call the restartGame function when the restart game button is clicked
+  $('#restart').on('click', htmlRestartGame);
 }
 
 //                                                                    //
@@ -18,8 +22,11 @@ function initialize(){
 
   //* called by the initialize function when the form submit button is clicked
 function submitForm(e){
-    //* set 'player' variable to the value given in the 'player' field
-  var player = $('input[name="player"]').val();
+
+  if(!player){
+      //* set 'player' variable to the value given in the 'player' field
+    player = $('input[name="player"]').val();
+  }
     //* set the url using the player variable
   var url = '/moon/start?player=' + player;
 
@@ -48,14 +55,22 @@ function clickCard(){
   //* called by submitForm after the ajax request returns data
   //*
   //* exports.start used this line to tell the server what data it should send back:
-  //*   res.send({hand: game.hand, initial: game.initial, id: game.id});
+  //*   res.send({hand: game.hand, id: game.id});
 function htmlInitiateGame(game){
+
+    //* add a class of 'fadeIn' to the runscape where runs are assembled
+  $('#runscape').addClass('fadeIn');
+    //* remove the class of 'hidden' from the runscape
+  $('#runscape').removeClass('hidden');
+
+    //* remove the class of 'hidden' from the run (since the class may have been added by the
+    //*   restartGame function)
+  $('#run').removeClass('hidden');
+
     //* slowly reveal the button that will restart a game
   setTimeout(function() { $('#restart').removeClass('hidden').addClass('fadeIn'); }, 1000);
     //* remove the form from the page
   $('form#game').remove();
-    //* reveal the area below the header for assembling a run
-  $('#runscape').removeClass('hidden');
 
     //* extract the first pair from the array
   var initialPair = game.hand.shift();
@@ -69,11 +84,14 @@ function htmlInitiateGame(game){
     //*   defines its shapes and colors for styling purposes (though it can also be used for
     //*   targeting the element rather than weighing each div down with separate data for that)
   var pairs = _.map(game.hand, function(h, i){return '<div class="' + game.hand[i] + ' available"></div>';});
-  // var pairs = _.map(game.hand, function(h, i){return '<div class="footprint hidden"><div class="' + game.hand[i] + ' available"></div></div>';});
-    //* add the card to the hand area
+    //* add the cards to the hand area
   $('#hand').append(pairs);
     //* give the parent div a data attribute of the game id
   $('#hand').attr('data-id', game.id);
+    //* add a class of 'fadeIn' to the hand
+  $('#hand').addClass('fadeIn');
+    //* reveal the hand
+  $('#hand').removeClass('hidden');
 }
 
   // * called by checkForMatch if a match is found
@@ -152,7 +170,33 @@ function htmlIndicateWin(){
     //* after an interval that will allow slideOutLeft to conclude even if the browser is
     //*   full-screen, add a class of 'slideInRight' to the run, which will slide it in from the right
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
+}
 
+  //* called by the initialize function when the restart game button is clicked
+function htmlRestartGame(){
+    //* remove classes from the run that may have been added by the htmlIndicateWin function
+  $('#run').removeClass('slideInRight').removeClass('slideOutLeft');
+
+    //* reset the notifier count
+  $('#notifier').empty();
+
+    //* clear the run of all cards
+  $('#run').empty();
+    //* reset the run to its initial width
+  $('#run').css('width', '150px');
+    //* reset the run to its initial left position
+  $('#run').css('left', '25px');
+    //* hide the run to prepare for the new game
+  $('#run').addClass('hidden');
+
+    //* remove the class of 'fadeIn' from the hand
+  $('#hand').removeClass('fadeIn');
+    //* clear the hand of all cards
+  $('#hand').empty();
+
+    //* after a short pause, call the function that will
+    //*   send the ajax request to populate the game board
+  setTimeout(function() { submitForm(); }, 300);
 }
 
 //                                                                    //
