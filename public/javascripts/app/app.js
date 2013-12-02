@@ -9,7 +9,7 @@ function initialize(){
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
     //* call the enterDemoMode function when the h1 in the header is clicked
-  $('#header h1').on('click', enterDemoMode);
+  $('#header h1').on('click', prepareDemoMode);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
     //* call the restartGame function when the restart game button is clicked
@@ -41,17 +41,17 @@ function submitForm(e){
 }
 
   //* called by the initialize function when the h1 in the header is clicked
-function enterDemoMode(){
+function prepareDemoMode(){
     //* call the function that will reset the board for a new game
   htmlClearGame();
     //* define game for purposes of the demo mode
   var game = {};
     //* define game.hand with an array of pairs each matching the one following it
-  game.hand = [ 'btyc', 'btrs', 'btys', 'btbs', 'bcbs', 'bcbt', 'ycbt', 'rcyt', 'rcbc', 'rtbc', 'bsbc', 'bsyc', 'ytyc', 'ytrt', 'ysrc', 'ysyt' ];
+  game.hand = [ 'bcrs', 'ycys', 'ycyc', 'bcyc', 'bsys', 'ysrs', 'ytrs', 'ytbs', 'rtbs', 'ycbs', 'ycrt', 'bcrt', 'bcrc', 'rcbc', 'rcys', 'rsyc' ];
     //* define game.id as 'demo-mode'
   game.id = 'demo-mode';
-      //* call the function that will update the DOM
-  htmlInitiateGame(game);
+    //* call the function that will update the DOM
+  htmlEnterDemoMode(game);
 }
 
   //* called by the initialize function when a dynamically created div is clicked
@@ -80,6 +80,13 @@ function restartGame(){
   //* exports.start used this line to tell the server what data it should send back:
   //*   res.send({hand: game.hand, id: game.id});
 function htmlInitiateGame(game){
+
+    //* if the game isn't in demo mode...
+  if(game.id !== 'demo-mode'){
+      //* set the h1 text to "Dead Moon" (since the text may have been changed by the
+      //*   htmlEnterDemoMode function)
+    $('#header h1').text('Dead Moon');
+  }
 
     //* add a class of 'fadeIn' to the runscape where runs are assembled
   $('#runscape').addClass('fadeIn');
@@ -190,7 +197,7 @@ function htmlIndicateWin(){
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
 }
 
-  //* called by the restartGame and enterDemoMode functions
+  //* called by the restartGame and prepareDemoMode functions
 function htmlClearGame(){
     //* remove classes from the run that may have been added by the htmlIndicateWin function
   $('#run').removeClass('slideInRight').removeClass('slideOutLeft');
@@ -212,6 +219,14 @@ function htmlClearGame(){
     //* clear the hand of all cards
   $('#hand').empty();
 }
+
+function htmlEnterDemoMode(game){
+    //* set the h1 text to "Demo Mode"
+  $('#header h1').text('Demo Mode');
+    //* call the function that will update the DOM with the new game
+  htmlInitiateGame(game);
+}
+
 
 //                                                                    //
 // --------------------------- evaluations -------------------------- //
