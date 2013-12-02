@@ -181,7 +181,7 @@
 /* * * mixins & variable definitions * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
 
-@import url(http://fonts.googleapis.com/css?family=Lato|Quicksand|Roboto+Slab:100,300);
+@import url(http://fonts.googleapis.com/css?family=Lato|Nixie+One|Quicksand|Roboto+Slab:100,300);
 
 @grayA: #fafafa;
 @grayB: #f2f2f2;
@@ -199,9 +199,16 @@
 @blueB: #0b173b;
 @blueC: #084b8a;
 @blueD: #0b3861;
+@blueE: #1a4da1;
+@blueF: #4093c8;
+@blueG: #8dc5df;
 
 @yellow: #f4d11e;
 
+@red: #fc0000;
+
+@grayD90: rgba(216,216,216,.9);
+@grayG90: rgba(132,132,132,.9);
 @black50: rgba(0,0,0,.5);
 
 .gradient-top-origin(@startColor, @endColor) {
@@ -279,14 +286,14 @@
 
 #header a#tutorial {
   position: absolute;
-  top: 31px;
+  top: 64px;
   right: 30px;
 }
 
 #restart {
   position: absolute;
-  top: 31px;
-  right: 186px;
+  top: 64px;
+  right: 170px;
   .animated;
 }
 
@@ -298,7 +305,7 @@
   border-radius: 7px;
 
   h2 {
-    font: 56px/150% 'Roboto Slab', sans-serif;
+    font: 56px/150% 'Nixie One', sans-serif;
     color: @blueA;
   }
 }
@@ -311,18 +318,19 @@ body {
 
 #header {
   width: 100%;
-  height: 82px;
-  .gradient-left-origin(@blueA, lighten(@blueA, 20%))
+  height: 132px;
+  // .gradient-left-origin(#800080, lighten(@blueA, 20%))
 }
 
 h1 {
   text-align: center;
-  font: 44px/150% 'Roboto Slab', sans-serif;
-  font-weight: bold;
+  font: 58px/150% 'Nixie One', sans-serif;
+  // font-weight: bold;
   letter-spacing: .07em;
+  // color: @yellow;
   color: @grayB;
   margin-top: 0;
-  padding-top: 10px;
+  padding-top: 30px;
   .transition(2s);
   .aura(15px, black);
 }
@@ -332,21 +340,41 @@ h1:hover {
 }
 
 fieldset {
-  margin-top: 125px;
-  height: 75px;
-  background-color: @grayF;
-  box-shadow: 0 0 100px black;
-  .border-radius(6px);
+  background-color: rgba(0,0,0,0);
+  margin-top: 120px;
+  // height: 106px;
+  // .gradient-top-origin(@grayB, @grayD);
+  border-width: 0;
+  // .border-radius(6px);
 }
 
 #game button, #header a.button, #restart {
-  background-color: lighten(@blueA, 10%);
+  // background-color: lighten(@blueA, 10%);
+  background-color: @blueF;
+  // .gradient-left-origin(@blueF, @blueG);
   border-width: 0;
   box-shadow: none;
 }
 
 #game button:hover, #header a.button:hover, #restart:hover, #game button:focus, #header a.button:focus, #restart:focus {
+  // .gradient-left-origin(@yellow, yellow);
   background-color: @yellow;
+}
+
+#header a.button, #restart {
+  font: 14px/150% 'Lato', sans-serif;
+  line-height: 70%;
+  height: 30px;
+}
+
+#game input, #game button {
+  height: 60px;
+  font: 24px/150% 'Lato', sans-serif;
+  .border-radius(5px);
+}
+
+#game button {
+  line-height: 100%;
 }
 
 #runscape {
@@ -421,7 +449,7 @@ fieldset {
 
 #notifier {
   position: absolute;
-  top: 132px;
+  top: 182px;
   right: 5%;
   font: 64px/150% 'Lato', sans-serif;
   font-weight: bold;

@@ -4,16 +4,16 @@ include ../mixins/_field-mixin
 block content
   #header
     h1 Dead Moon
-    #restart.button.small.radius.hidden Restart Game
-    a(href="#", id="tutorial", data-reveal-id="tutorialModal", class="radius button small") Click for a tutorial
+    #restart.button.small.radius.hidden Start Over
+    a(href="#", id="tutorial", data-reveal-id="tutorialModal", class="radius button small")  View Tutorial
   #notifier
   .row
-    .small-6.small-centered.columns
+    .small-9.small-centered.columns
       include _form
   #runscape.hidden
     #run
   #hand.hidden
-  div(id="tutorialModal", class="large reveal-modal gray-gradient", data-reveal, style="height: 800px; text-align: center; top: 150px;")
+  div(id="tutorialModal", class="large reveal-modal gray-gradient", data-reveal, style="height: 900px; text-align: center; top: 130px;")
     h2 How to play
     a.close-reveal-modal &#215;
   div(id="winModal", class="small reveal-modal brilliant", data-reveal, style="height: 265px; text-align: center; top: 370px;")
