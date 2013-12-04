@@ -186,7 +186,14 @@ function htmlUpdateDisplay(runLength){
 }
 
 function htmlIndicateWin(){
-  $('#winMessage').text('Hot damn, ' + player + ', you matched all 16 cards!');
+    //* if the name to be displayed is long enough to push to another line...
+  if(player.length > 4){
+      //* increase the height of the win message modal to accomodate another line
+    $('#winModal').css('height', '410px');
+  }
+
+    //* display a win notification incorporating the player's name
+  $('#winMessage').text('Hot damn, ' + player + ', you\'ve matched all 16 cards!');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added

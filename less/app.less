@@ -89,40 +89,6 @@
   right: 205px;
 }
 
-.reveal-modal-bg {
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.reveal-modal {
-  border-radius: 7px;
-  border-width: 0;
-
-  h2, h3 {
-    font-family: 'Roboto Slab', sans-serif;
-    font-weight: normal;
-    line-height: 150%;
-    color: @blueE;
-  }
-
-  h2 {
-    font-size: 54px;
-    margin-bottom: 10px;
-  }
-
-  h3 {
-    font-size: 32px;
-    padding-top: 20px;
-  }
-
-  h6 {
-    font: 32px/100% 'Gudea', sans-serif;
-  }
-
-  p {
-    font: 24px/120% 'Gudea', sans-serif;
-  }
-}
-
 body {
   height: 100%;
   min-height: 1000px;
@@ -248,15 +214,6 @@ fieldset {
   .flash;
 }
 
-.sprite( @x-offset, @y-offset) {
-  height: 150px;
-  width: 150px;
-  background-image: url('../images/moon-sprite-1_150.png');
-  background-repeat: no-repeat;
-  background-position: (@x-offset * -150px) (@y-offset * -150px);
-  display: inline-block;
-}
-
 #notifier {
   position: absolute;
   top: 182px;
@@ -269,11 +226,60 @@ fieldset {
   .fadeIn;
 }
 
+.reveal-modal-bg {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.reveal-modal {
+  border-radius: 7px;
+  border-width: 0;
+
+  h2, h3 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: normal;
+    line-height: 150%;
+    color: @blueE;
+  }
+
+  h2 {
+    font-size: 54px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    font-size: 32px;
+    padding-top: 20px;
+  }
+
+  h6 {
+    font: 32px/100% 'Gudea', sans-serif;
+  }
+
+  p {
+    font: 24px/120% 'Gudea', sans-serif;
+  }
+}
+
+#winModal {
+  height: 330px;
+  top: 370px;
+  text-align: center;
+}
+
 
 
 /**/
 /* * * sprite positioning * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /**/
+
+.sprite( @x-offset, @y-offset) {
+  height: 150px;
+  width: 150px;
+  background-image: url('../images/moon-sprite-1_150.png');
+  background-repeat: no-repeat;
+  background-position: (@x-offset * -150px) (@y-offset * -150px);
+  display: inline-block;
+}
 
 //   sprite row 0  //  blue top, blue bottom  //
 
