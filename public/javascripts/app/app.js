@@ -143,9 +143,10 @@ function htmlAddCardToRun(clickedCard, clickedPair){
 
     //* determine whether there's less than 20% of available space for #run remaining
   if(rightRunMargin/windowSize < 0.2){
-      //* decrement runPos.left by 110, the pixel value a new match card adds to runWidth,
-      //*   in order to shift #run left to accommodate a new card
-    runPos.left -= 110;
+      //* decrement runPos.left by the pixel value a new match card adds to runWidth
+      //*   (calculated by subtracting the overlap from the width of a card), in order to
+      //*   shift #run left to accommodate a new card
+    runPos.left -= 120;
       //* animate a shift of #run to the left position specified
     $('#run').animate( {'left':runPos.left}, 'slow', function(){} );
   }
@@ -157,8 +158,8 @@ function htmlAddCardToRun(clickedCard, clickedPair){
     //* calculate the number of pairs in the run area
   var runLength = $('.run').length;
 
-    //* increment runWidth by 110px
-  runWidth += 110;
+    //* increment runWidth by the number of pixels a new card adds to runWidth (see above)
+  runWidth += 120;
     //* set the width of the run area to runWidth
   $('#run').width(runWidth);
 
@@ -193,7 +194,7 @@ function htmlIndicateWin(){
   }
 
     //* display a win notification incorporating the player's name
-  $('#winMessage').text('Hot damn, ' + player + ', you\'ve matched all 16 cards!');
+  $('#winMessage').text('Hot damn, ' + player + ', you\’ve matched all 16 cards!');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
