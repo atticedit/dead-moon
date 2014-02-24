@@ -5,6 +5,7 @@ block content
   #header
     h1 Dead Moon
     #demo.button.small.radius Enter Demo Mode
+    #tutorial.button.small.radius Tutorial
     #restart.button.small.radius.hidden Start New Game
   #notifier
   .row
@@ -15,4 +16,9 @@ block content
   #hand.hidden
   div(id="winModal", class="small reveal-modal brilliant", data-reveal)
     h2(id="winMessage")
+    a.close-reveal-modal &#215;
+  div(id="tutorialModal", class="small reveal-modal brilliant", data-reveal)
+    h2 How To Play
+    p.
+      Instructions will go here.
     a.close-reveal-modal &#215;

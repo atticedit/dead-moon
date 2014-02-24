@@ -8,11 +8,13 @@ function initialize(){
   $(document).foundation();
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
-    //* call the enterDemoMode function when the h1 in the header is clicked
+    //* call the prepareDemoMode function when the 'Enter Demo Mode' button is clicked
   $('#demo').on('click', prepareDemoMode);
+    //* call the htmlDisplayTutorial function when the 'Tutorial' button is clicked
+  $('#tutorial').on('click', htmlDisplayTutorial);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
-    //* call the restartGame function when the restart game button is clicked
+    //* call the restartGame function when the 'Start New Game' button is clicked
   $('#restart').on('click', restartGame);
 }
 
@@ -40,7 +42,7 @@ function submitForm(e){
   });
 }
 
-  //* called by the initialize function when the h1 in the header is clicked
+  //* called by the initialize function when the 'Enter Demo Mode' button is clicked
 function prepareDemoMode(){
     //* call the function that will reset the board for a new game
   htmlClearGame();
@@ -179,6 +181,10 @@ function htmlIndicateFailedMatch(clickedCard){
 function htmlUpdateDisplay(runLength){
     //* set the text to the number of pairs in the run area
   $('#notifier').text(runLength);
+
+    //* FOR TESTING ONLY -- ALLOWS QUICK DISPLAY OF WIN MODAL
+  // if(runLength === 2){
+
     //* check if all cards have been matched
   if(runLength === 16){
       //* call the function that handles all win behavior
@@ -186,14 +192,15 @@ function htmlUpdateDisplay(runLength){
   }
 }
 
+  //* called by htmlUpdateDisplay when all cards have been matched
 function htmlIndicateWin(){
     //* if the name to be displayed is long enough to push to another line...
-  if(player.length > 4){
+  if(player.length > 3){
       //* increase the height of the win message modal to accomodate another line
     $('#winModal').css('height', '410px');
   }
 
-    //* display a win notification incorporating the player's name
+    //* set the win notification, incorporating the player's name
   $('#winMessage').text('Hot damn, ' + player + ', you\’ve matched all 16 cards!');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
@@ -203,6 +210,12 @@ function htmlIndicateWin(){
     //* after an interval that will allow slideOutLeft to conclude even if the browser is
     //*   full-screen, add a class of 'slideInRight' to the run, which will slide it in from the right
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
+}
+
+  //* called by the initialize function when the 'Tutorial' button is clicked
+function htmlDisplayTutorial(){
+    //* trigger a modal displaying the tutorial
+  setTimeout(function() { $('#tutorialModal').foundation('reveal', 'open');}, 100);
 }
 
   //* called by the restartGame and prepareDemoMode functions
