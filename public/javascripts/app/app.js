@@ -10,8 +10,8 @@ function initialize(){
   $('form#game').on('submit', submitForm);
     //* call the prepareDemoMode function when the 'Enter Demo Mode' button is clicked
   $('#demo').on('click', prepareDemoMode);
-    //* call the htmlDisplayTutorial function when the 'Tutorial' button is clicked
-  $('#tutorial').on('click', htmlDisplayTutorial);
+    //* call the htmlDisplayInstructions function when the 'Instructions' button is clicked
+  $('#instructions').on('click', htmlDisplayInstructions);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
     //* call the restartGame function when the 'Start New Game' button is clicked
@@ -196,12 +196,14 @@ function htmlUpdateDisplay(runLength){
 function htmlIndicateWin(){
     //* if the name to be displayed is long enough to push to another line...
   if(player.length > 3){
-      //* increase the height of the win message modal to accomodate another line
+      //* increase the height of the win message modal to accommodate another line
     $('#winModal').css('height', '410px');
   }
-
+    //* create a variable to accommodate not having a player name to insert in the next step
+  var playerText = ''
+  if(player){ playerText = player + ', ' }
     //* set the win notification, incorporating the player's name
-  $('#winMessage').text('Hot damn, ' + player + ', you\’ve matched all 16 cards!');
+  $('#winMessage').text('Hot damn, ' + playerText + 'you\’ve matched all 16 cards!');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
@@ -212,10 +214,10 @@ function htmlIndicateWin(){
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
 }
 
-  //* called by the initialize function when the 'Tutorial' button is clicked
-function htmlDisplayTutorial(){
-    //* trigger a modal displaying the tutorial
-  setTimeout(function() { $('#tutorialModal').foundation('reveal', 'open');}, 100);
+  //* called by the initialize function when the 'Instructions' button is clicked
+function htmlDisplayInstructions(){
+    //* trigger a modal displaying the instructions
+  setTimeout(function() { $('#instructionsModal').foundation('reveal', 'open');}, 100);
 }
 
   //* called by the restartGame and prepareDemoMode functions

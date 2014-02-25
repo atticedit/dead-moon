@@ -4,8 +4,11 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato|Gudea|Nixie+One|Roboto+Slab:100,300);
 
+@grayA: #2f2f2f;
 @grayB: #f2f2f2;
+@grayC: #444444;
 @grayE: #bdbdbd;
+@grayF: #eaeaea;
 @blueE: #1a4da1;
 @blueF: #4093c8;
 @yellow: #f4d11e;
@@ -53,7 +56,7 @@
 }
 
 .glow {
-  text-shadow: 0 0 12px white;
+  text-shadow: 0 0 20px white;
   .transition(2s);
 }
 
@@ -75,7 +78,7 @@
   display: none;
 }
 
-#game button, #header a.button, #demo, #restart, #tutorial {
+#game button, #header a.button, #demo, #restart, #instructions, .next, .previous, .close {
   border-width: 0;
   box-shadow: none;
 }
@@ -84,14 +87,34 @@
   background-color: @blueF;
 }
 
-#game button:hover, #header a.button:hover, #demo:hover, #restart:hover, #tutorial:hover, #game button:focus, #header a.button:focus, #demo:focus, #restart:focus, #tutorial:focus {
+#game button:hover,
+#header a.button:hover,
+#demo:hover,
+#restart:hover,
+#instructions:hover,
+.next:hover,
+.previous:hover,
+.close:hover,
+#game button:focus,
+#header a.button:focus,
+#demo:focus,
+#restart:focus,
+#instructions:focus,
+.next:focus,
+.previous:focus,
+.close:focus {
   background-color: @yellow;
 }
 
-#header a.button, #demo, #restart, #tutorial {
+#header a.button, #demo, #restart, #instructions, .next, .previous, .close {
   font: 16px/150% 'Gudea', sans-serif;
   line-height: 55%;
   height: 30px;
+}
+
+.next, .previous, .close {
+  font-size: 56px;
+  height: 32px;
 }
 
 #game input, #game button {
@@ -104,16 +127,16 @@
   line-height: 100%;
 }
 
-#demo, #restart, #tutorial {
+#demo, #restart, #instructions, .next, .previous, .close {
   position: absolute;
   .animated;
 }
 
-#demo, #tutorial {
+#demo, #instructions {
   top: 64px;
 }
 
-#demo, #tutorial {
+#demo, #instructions {
   background-color: rgba(255,255,255,0.2);
 }
 
@@ -121,7 +144,7 @@
   right: 50px;
 }
 
-#tutorial {
+#instructions {
   right: 225px;
 }
 
@@ -129,6 +152,18 @@
   width: 158px;
   top: 20px;
   background-color: @redB;
+}
+
+.next, .previous {
+  bottom: 40px;
+}
+
+.next, .close {
+  right: 80px;
+}
+
+.previous {
+  left: 80px;
 }
 
 body {
@@ -250,12 +285,13 @@ fieldset {
     font-family: 'Roboto Slab', sans-serif;
     font-weight: normal;
     line-height: 150%;
-    color: @blueE;
+    color: @blueF;
+    text-align: center;
   }
 
   h2 {
     font-size: 54px;
-    margin-bottom: 10px;
+    padding-bottom: -30px;
   }
 
   h3 {
@@ -263,12 +299,18 @@ fieldset {
     padding-top: 20px;
   }
 
+  h4 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
   h6 {
     font: 32px/100% 'Gudea', sans-serif;
   }
 
   p {
-    font: 24px/120% 'Gudea', sans-serif;
+    font: 22px/130% 'Gudea', sans-serif;
+    color: @grayC;
   }
 }
 
@@ -277,14 +319,28 @@ fieldset {
   padding: 30px 30px;
   top: 370px;
   text-align: center;
+
+  h2 {
+    color: @blueE;
+  }
 }
 
-#tutorialModal {
-  // width: 1000px;
-  // height: 600px;
-  padding: 30px 30px;
+#instructionsModal,
+#instructionsModalTwo,
+#instructionsModalThree,
+#instructionsModalFour,
+#instructionsModalFive, {
   top: 145px;
-  text-align: center;
+  padding: 30px 80px 110px 80px;
+  // background: @grayF;
+}
+
+#instructionsModalTwo {
+  top: 125px;
+}
+
+.close.close-reveal-modal {
+  bottom: 40px;
 }
 
 /**/

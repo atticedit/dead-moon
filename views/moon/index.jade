@@ -5,7 +5,7 @@ block content
   #header
     h1 Dead Moon
     #demo.button.small.radius Enter Demo Mode
-    #tutorial.button.small.radius Tutorial
+    #instructions.button.small.radius Instructions
     #restart.button.small.radius.hidden Start New Game
   #notifier
   .row
@@ -17,8 +17,85 @@ block content
   div(id="winModal", class="small reveal-modal brilliant", data-reveal)
     h2(id="winMessage")
     a.close-reveal-modal &#215;
-  div(id="tutorialModal", class="small reveal-modal brilliant", data-reveal)
-    h2 How To Play
+  div(id="instructionsModal", class="large reveal-modal", data-reveal)
+    h2 How to Play
+    h4 Object of the game
     p.
-      Instructions will go here.
+      Like all the best card games, Dead Moon involves a hearty mix of strategy
+      and luck of the draw. You look at the cards in your hand for colors and shapes
+      that match to the card that was last played.
+    p.
+      Unlike with other matching games, there are no identical cards in the
+      deck. Instead, two cards match by sharing colors, shapes, or both.
+    p When you assemble a run of all 16 of your cards, you win!
+    p
+      em Next, let’s learn how to match cards.
+    p
+      a(data-reveal-id="instructionsModalTwo", class="button small radius next", href="#") Matching >>
+    a.close-reveal-modal &#215;
+  div(id="instructionsModalTwo", class="xlarge reveal-modal", data-reveal)
+    h4 Matching
+    p There are 4 ways for cards to match:
+    p Top shapes and colors match -- example: both are blue circles
+    p Bottom shapes and colors match -- example: both are red triangles
+    p Top shapes match and bottom shapes match -- example: yellow shapes are above red shapes
+    p Top colors match and bottom colors match -- example: triangles are above squares
+    p
+      em Next up: we’ll look at calling a match.
+    p
+      a(data-reveal-id="instructionsModal", class="button small radius previous", href="#") << Object of the game
+    p
+      a(data-reveal-id="instructionsModalThree", class="button small radius next", href="#") Calling a match >>
+    a.close-reveal-modal &#215;
+  div(id="instructionsModalThree", class="large reveal-modal", data-reveal)
+    h4 Calling a match
+    p.
+      You’ll always be matching your next card to the last card added to your run, which
+      is displayed along the top.
+    p.
+      To play a card, just click on it. The card will either
+      disappear from the hand and join the run, or it will fade out and back in again to
+      indicate it’s not a match.
+    p.
+      There’s no penalty for wrong guesses, so feel free to give things a try.
+      If you get stuck, click the “Start New Game” button at the top of the page.
+    p.
+      <em>A tip:</em> As you get used to the matching patterns it can be helpful to play
+      the game in demo mode, which makes matches for you.
+    p
+      em Next, let’s see how demo mode works.
+    p
+      a(data-reveal-id="instructionsModalTwo", class="button small radius previous", href="#") << Matching
+    p
+      a(data-reveal-id="instructionsModalFour", class="button small radius next", href="#") About demo mode >>
+    a.close-reveal-modal &#215;
+  div(id="instructionsModalFour", class="large reveal-modal", data-reveal)
+    h4 About demo mode
+    p.
+      When you click the “Enter Demo Mode” button, the cards will be dealt in a
+      specific sequence. We take care of all the matching for you!
+    p.
+      If you play each card in order, from the top left to the bottom right, each
+      will match to the previous one. This provides an easy way to study the matching
+      patterns.
+    p To exit demo mode at any time, click the “Start New Game” button.
+    p
+      em Next: you’re just about finished...
+    p
+      a(data-reveal-id="instructionsModalThree", class="button small radius previous", href="#") << The basics
+    p
+      a(data-reveal-id="instructionsModalFive", class="button small radius next", href="#") Finish up >>
+    a.close-reveal-modal &#215;
+  div(id="instructionsModalFive", class="large reveal-modal", data-reveal)
+    h4 Finish up
+    p.
+      That’s it! Once the game begins, these instructions will be available to you at any time
+      from the top of the page.
+    p Remember: it might take you a while to see the patterns, so take your time.
+    p
+      em Have fun!
+    p
+      a(data-reveal-id="instructionsModalFour", class="button small radius previous", href="#") << About demo mode
+    //- p
+      a(class="button small radius close close-reveal-modal", href="#") Close instructions >>
     a.close-reveal-modal &#215;
