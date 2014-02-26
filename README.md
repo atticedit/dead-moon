@@ -5,6 +5,8 @@ Dead Moon
 
 Dead Moon uses combinations of 3 shapes (circles, squares, & triangles) and 3 colors (blue, red, & yellow) to form pairs that can be matched to each other through shape, color, or both.
 
+Try it out yourself at http://54.200.54.252
+
 ## Gameplay
 
 Players attempt to assemble a run of 16 cards, each matching to the previous card played.
@@ -17,8 +19,8 @@ Dead Moon is built with JavaScript, jQuery, Node.js, MongoDB, Express, Jade, & L
 
 Here's the full set of 81 possible cards, from which the player is dealt a random selection of 16:
 
-![81-piece array](https://github.com/atticedit/dead-moon/raw/master/public/images/sprite.png "Dead Moon 81-piece array")
+![sprite.png](https://github.com/atticedit/dead-moon/raw/master/public/images/sprite.png "Dead Moon 81-piece array")
 
 This image is used as a sprite in the project, which uses Less.js to programmatically handle the appropriate offsets for display of a given card.
 
-A range of animations and interactions were designed for the game, many of them adapted from the animate.css animations by Dan Eden.
+A number of animations and interactions were designed for the game, many of them adapted from the animate.css animations by Dan Eden.
