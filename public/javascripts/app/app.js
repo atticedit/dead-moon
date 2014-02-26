@@ -243,7 +243,6 @@ function htmlEnterDemoMode(game){
   htmlInitiateGame(game);
 }
 
-
 //                                                                    //
 // --------------------------- evaluations -------------------------- //
 //                                                                    //

@@ -5,7 +5,6 @@ var coloring = require('colors');
   //*   if it's used by name somewhere else
   //* logging satisfies that, and logging only index 0 prevents a verbose log
 console.log(coloring[0]);
-// var __ = require('lodash');
 
 // Colors: bold, italic, underline, inverse, yellow, cyan, white, magenta, green, red, grey, blue, rainbow, zebra, random
 

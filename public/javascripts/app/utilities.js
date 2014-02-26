@@ -12,18 +12,6 @@ function getValue(selector, fn){
   return value;
 }
 
-function parseUpperCase(string){
-  return string.toUpperCase();
-}
-
-function parseLowerCase(string){
-  return string.toLowerCase();
-}
-
-function formatCurrency(number){
-  return '$' + number.toFixed(2);
-}
-
 function sendAjaxRequest(url, data, verb, altVerb, event, successFn){
   var options = {};
   options.url = url;
