@@ -15,3 +15,7 @@ require('./config').initialize(app/*, RedisStore*/);
   //* routes
 app.get('/', moon.index);
 app.post('/moon/start', moon.start);
+
+  //* start server & socket.io
+var server = require('http').createServer(app);
+server.listen(app.get('port'));
