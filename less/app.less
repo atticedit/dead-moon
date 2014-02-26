@@ -4,15 +4,13 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato|Gudea|Nixie+One|Roboto+Slab:100,300);
 
-@grayA: #2f2f2f;
-@grayB: #f2f2f2;
-@grayC: #444444;
-@grayE: #bdbdbd;
-@grayF: #eaeaea;
-@blueE: #1a4da1;
-@blueF: #4093c8;
+@grayA: #f2f2f2;
+@grayB: #444444;
+@grayC: #bdbdbd;
+@blueA: #1a4da1;
+@blueB: #4093c8;
 @yellow: #f4d11e;
-@redB: #ff5933;
+@red: #ff4428;
 @black50: rgba(0,0,0,.5);
 
 .gradient-top-origin(@startColor, @endColor) {
@@ -61,14 +59,12 @@
 }
 
 .gray-gradient {
-  .gradient-top-origin(white, @grayE);
+  .gradient-top-origin(white, @grayC);
 }
 
 .brilliant {
   box-shadow: 0 0 200px white;
 }
-
-
 
 /**/
 /* * * styles * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -78,13 +74,20 @@
   display: none;
 }
 
-#game button, #header a.button, #demo, #restart, #instructions, .next, .previous, .close {
+#game button,
+#header a.button,
+#demo,
+#restart,
+#instructions,
+.next,
+.previous,
+.close {
   border-width: 0;
   box-shadow: none;
 }
 
 #game button {
-  background-color: @blueF;
+  background-color: @blueB;
 }
 
 #game button:hover,
@@ -106,18 +109,27 @@
   background-color: @yellow;
 }
 
-#header a.button, #demo, #restart, #instructions, .next, .previous, .close {
+#header a.button,
+#demo,
+#restart,
+#instructions,
+.next,
+.previous,
+.close {
   font: 16px/150% 'Gudea', sans-serif;
   line-height: 55%;
   height: 30px;
 }
 
-.next, .previous, .close {
+.next,
+.previous,
+.close {
   font-size: 56px;
   height: 32px;
 }
 
-#game input, #game button {
+#game input,
+#game button {
   height: 60px;
   font: 24px/150% 'Gudea', sans-serif;
   .border-radius(5px);
@@ -127,38 +139,50 @@
   line-height: 100%;
 }
 
-#demo, #restart, #instructions, .next, .previous, .close {
+#demo,
+#restart,
+#instructions,
+.next,
+.previous,
+.close {
   position: absolute;
   .animated;
 }
 
-#demo, #instructions {
+#demo,
+#instructions {
   top: 64px;
 }
 
-#demo, #instructions {
+#demo,
+#instructions {
   background-color: rgba(255,255,255,0.2);
 }
 
-#demo, #restart {
+#demo,
+#restart {
   right: 50px;
 }
 
 #instructions {
-  right: 225px;
+  right: 185px;
 }
 
 #restart {
-  width: 158px;
-  top: 20px;
-  background-color: @redB;
+  top: 457px;
+  background-color: @red;
+  line-height: 200%;
+  height: 50px;
+  margin-left: 10px;
 }
 
-.next, .previous {
-  bottom: 40px;
+.next,
+.previous {
+  bottom: 30px;
 }
 
-.next, .close {
+.next,
+.close {
   right: 80px;
 }
 
@@ -183,7 +207,7 @@ h1 {
   text-align: center;
   font: 58px/150% 'Nixie One', sans-serif;
   letter-spacing: .07em;
-  color: @grayB;
+  color: @grayA;
   margin-top: 0;
   padding-top: 30px;
   .transition(2s);
@@ -256,7 +280,8 @@ fieldset {
   .fade(0, .4s);
 }
 
-#hand div.unmatched, #run.unmatched {
+#hand div.unmatched,
+#run.unmatched {
   .animated;
   .flash;
 }
@@ -267,7 +292,7 @@ fieldset {
   right: 5%;
   font: 64px/150% 'Lato', sans-serif;
   font-weight: bold;
-  color: @grayB;
+  color: @grayA;
   .aura(28px, white);
   .animated;
   .fadeIn;
@@ -280,12 +305,33 @@ fieldset {
 .reveal-modal {
   border-radius: 7px;
   border-width: 0;
+}
 
-  h2, h3 {
+#winModal {
+  padding: 40px 60px 50px 60px;
+  top: 355px;
+  text-align: center;
+
+  h2 {
+    font: 54px/150% 'Roboto Slab', sans-serif;
+    font-weight: normal;
+    color: @blueA;
+    margin-bottom: 10px;
+  }
+}
+
+#instructionsModalOne,
+#instructionsModalTwo,
+#instructionsModalThree,
+#instructionsModalFour, {
+  top: 145px;
+  padding: 30px 80px 100px 80px;
+
+  h2 {
     font-family: 'Roboto Slab', sans-serif;
     font-weight: normal;
     line-height: 150%;
-    color: @blueF;
+    color: @blueB;
     text-align: center;
   }
 
@@ -294,53 +340,51 @@ fieldset {
     padding-bottom: -30px;
   }
 
-  h3 {
-    font-size: 32px;
-    padding-top: 20px;
-  }
-
   h4 {
     padding-top: 30px;
     padding-bottom: 10px;
   }
 
-  h6 {
-    font: 32px/100% 'Gudea', sans-serif;
+  li {
+    font: 18px/100% 'Gudea', sans-serif;
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+    list-style-type: none;
+  }
+
+  li:nth-child(1) {
+    left: -40px;
+  }
+
+  li:nth-child(2) {
+    left: -25px;
+  }
+
+  li:nth-child(3) {
+    left: -35px;
+  }
+
+  li:nth-child(4) {
+    left: -40px;
   }
 
   p {
     font: 22px/130% 'Gudea', sans-serif;
-    color: @grayC;
+    color: @grayB;
   }
-}
 
-#winModal {
-  height: 330px;
-  padding: 30px 30px;
-  top: 370px;
-  text-align: center;
-
-  h2 {
-    color: @blueE;
+  img {
+    padding: 22px 20px 22px 40px;
   }
-}
 
-#instructionsModal,
-#instructionsModalTwo,
-#instructionsModalThree,
-#instructionsModalFour,
-#instructionsModalFive, {
-  top: 145px;
-  padding: 30px 80px 110px 80px;
-  // background: @grayF;
-}
+  img:first-of-type {
+    padding-top: 5px;
+  }
 
-#instructionsModalTwo {
-  top: 125px;
-}
-
-.close.close-reveal-modal {
-  bottom: 40px;
+  img:last-of-type {
+    padding-bottom: 32px;
+  }
 }
 
 /**/
@@ -464,10 +508,8 @@ fieldset {
 .ytys {.sprite( 7, 8 );}
 .ytyt {.sprite( 8, 8 );}
 
-
-
 /**/
-/* * * animations based on animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * * * * * * * */
+/* * * custom animations based on animate.css by Dan Eden | https://github.com/daneden/animate.css * * * * * * * * * * * * * * * */
 /**/
 
 .animatedSlide {

@@ -8,13 +8,13 @@ function initialize(){
   $(document).foundation();
     //* call the submitForm function when the form submit button is clicked
   $('form#game').on('submit', submitForm);
-    //* call the prepareDemoMode function when the 'Enter Demo Mode' button is clicked
+    //* call the prepareDemoMode function when the 'Demo Mode' button is clicked
   $('#demo').on('click', prepareDemoMode);
     //* call the htmlDisplayInstructions function when the 'Instructions' button is clicked
   $('#instructions').on('click', htmlDisplayInstructions);
     //* call the clickCard function when a child of #hand with class of 'available' is clicked
   $('#hand').on('click', '.available', clickCard);
-    //* call the restartGame function when the 'Start New Game' button is clicked
+    //* call the restartGame function when the 'Try Again' button is clicked
   $('#restart').on('click', restartGame);
 }
 
@@ -42,7 +42,7 @@ function submitForm(e){
   });
 }
 
-  //* called by the initialize function when the 'Enter Demo Mode' button is clicked
+  //* called by the initialize function when the 'Demo Mode' button is clicked
 function prepareDemoMode(){
     //* call the function that will reset the board for a new game
   htmlClearGame();
@@ -64,7 +64,7 @@ function clickCard(){
   checkForMatch(clickedCard);
 }
 
-  //* called by the initialize function when the restart game button is clicked
+  //* called by the initialize function when the 'Try Again' button is clicked
 function restartGame(){
     //* call the function that will reset the board for a new game
   htmlClearGame();
@@ -75,7 +75,13 @@ function restartGame(){
 
 //                                                                    //
 // ------------------------ DOM manipulation ------------------------ //
-//                                                                    //
+//
+
+  //* called by the initialize function when the 'Instructions' button is clicked
+function htmlDisplayInstructions(){
+    //* trigger a modal displaying the instructions
+  setTimeout(function() { $('#instructionsModalOne').foundation('reveal', 'open');}, 100);
+}                                                                    //
 
   //* called by submitForm after the ajax request returns data
   //*
@@ -182,9 +188,6 @@ function htmlUpdateDisplay(runLength){
     //* set the text to the number of pairs in the run area
   $('#notifier').text(runLength);
 
-    //* FOR TESTING ONLY -- ALLOWS QUICK DISPLAY OF WIN MODAL
-  // if(runLength === 2){
-
     //* check if all cards have been matched
   if(runLength === 16){
       //* call the function that handles all win behavior
@@ -194,16 +197,12 @@ function htmlUpdateDisplay(runLength){
 
   //* called by htmlUpdateDisplay when all cards have been matched
 function htmlIndicateWin(){
-    //* if the name to be displayed is long enough to push to another line...
-  if(player.length > 3){
-      //* increase the height of the win message modal to accommodate another line
-    $('#winModal').css('height', '410px');
-  }
-    //* create a variable to accommodate not having a player name to insert in the next step
+    //* create a variable to prepare for inserting the player's name correctly in the win message
   var playerText = ''
-  if(player){ playerText = player + ', ' }
+    //* set playerText to a comma and space plus the player's name, but keep it empty if no player
+  if(player){ playerText = ', ' + player }
     //* set the win notification, incorporating the player's name
-  $('#winMessage').text('Hot damn, ' + playerText + 'you\’ve matched all 16 cards!');
+  $('#winMessage').text('Hot biscuits' + playerText + '! You\’ve matched all 16 cards.');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
@@ -212,12 +211,6 @@ function htmlIndicateWin(){
     //* after an interval that will allow slideOutLeft to conclude even if the browser is
     //*   full-screen, add a class of 'slideInRight' to the run, which will slide it in from the right
   setTimeout(function() { $('#run').addClass('slideInRight'); }, 3200);
-}
-
-  //* called by the initialize function when the 'Instructions' button is clicked
-function htmlDisplayInstructions(){
-    //* trigger a modal displaying the instructions
-  setTimeout(function() { $('#instructionsModal').foundation('reveal', 'open');}, 100);
 }
 
   //* called by the restartGame and prepareDemoMode functions

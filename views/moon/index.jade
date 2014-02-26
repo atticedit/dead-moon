@@ -4,9 +4,9 @@ include ../mixins/_field-mixin
 block content
   #header
     h1 Dead Moon
-    #demo.button.small.radius Enter Demo Mode
+    #demo.button.small.radius Demo Mode
     #instructions.button.small.radius Instructions
-    #restart.button.small.radius.hidden Start New Game
+    #restart.button.small.radius.hidden Play Again
   #notifier
   .row
     .small-9.small-centered.columns
@@ -14,10 +14,10 @@ block content
   #runscape.hidden
     #run
   #hand.hidden
-  div(id="winModal", class="small reveal-modal brilliant", data-reveal)
+  div(id="winModal", class="medium reveal-modal brilliant", data-reveal)
     h2(id="winMessage")
     a.close-reveal-modal &#215;
-  div(id="instructionsModal", class="large reveal-modal", data-reveal)
+  div(id="instructionsModalOne", class="large reveal-modal", data-reveal)
     h2 How to Play
     h4 Object of the game
     p.
@@ -33,37 +33,34 @@ block content
     p
       a(data-reveal-id="instructionsModalTwo", class="button small radius next", href="#") Matching >>
     a.close-reveal-modal &#215;
-  div(id="instructionsModalTwo", class="xlarge reveal-modal", data-reveal)
+  div(id="instructionsModalTwo", class="large reveal-modal", data-reveal)
     h4 Matching
     p There are 4 ways for cards to match:
-    p Top shapes and colors match -- example: both are blue circles
-    p Bottom shapes and colors match -- example: both are red triangles
-    p Top shapes match and bottom shapes match -- example: yellow shapes are above red shapes
-    p Top colors match and bottom colors match -- example: triangles are above squares
+    ul
+      li <img src="./images/bcxx.png"/> Top shapes and colors match
+      li <img src="./images/xxrt.png"/> Bottom shapes and colors match
+      li <img src="./images/xtxs.png"/> Top and bottom shapes match
+      li <img src="./images/yxbx.png"/> Top and bottom colors match
     p
-      em Next up: we’ll look at calling a match.
+      em Next up: we’ll look at how to call a match.
     p
-      a(data-reveal-id="instructionsModal", class="button small radius previous", href="#") << Object of the game
+      a(data-reveal-id="instructionsModalOne", class="button small radius previous", href="#") << Object of the game
     p
       a(data-reveal-id="instructionsModalThree", class="button small radius next", href="#") Calling a match >>
     a.close-reveal-modal &#215;
   div(id="instructionsModalThree", class="large reveal-modal", data-reveal)
-    h4 Calling a match
+    h4 How to call a match
     p.
       You’ll always be matching your next card to the last card added to your run, which
       is displayed along the top.
     p.
-      To play a card, just click on it. The card will either
-      disappear from the hand and join the run, or it will fade out and back in again to
-      indicate it’s not a match.
+      To play a card, just click on it. If it’s a match, the card will disappear from
+      the hand and join the run.
     p.
       There’s no penalty for wrong guesses, so feel free to give things a try.
-      If you get stuck, click the “Start New Game” button at the top of the page.
-    p.
-      <em>A tip:</em> As you get used to the matching patterns it can be helpful to play
-      the game in demo mode, which makes matches for you.
+      If you get stuck, click the Play Again button you’ll find to the right of the game.
     p
-      em Next, let’s see how demo mode works.
+      em Last but not least, let’s take a look at demo mode.
     p
       a(data-reveal-id="instructionsModalTwo", class="button small radius previous", href="#") << Matching
     p
@@ -72,30 +69,14 @@ block content
   div(id="instructionsModalFour", class="large reveal-modal", data-reveal)
     h4 About demo mode
     p.
-      When you click the “Enter Demo Mode” button, the cards will be dealt in a
-      specific sequence. We take care of all the matching for you!
-    p.
-      If you play each card in order, from the top left to the bottom right, each
-      will match to the previous one. This provides an easy way to study the matching
-      patterns.
-    p To exit demo mode at any time, click the “Start New Game” button.
-    p
-      em Next: you’re just about finished...
-    p
-      a(data-reveal-id="instructionsModalThree", class="button small radius previous", href="#") << The basics
-    p
-      a(data-reveal-id="instructionsModalFive", class="button small radius next", href="#") Finish up >>
-    a.close-reveal-modal &#215;
-  div(id="instructionsModalFive", class="large reveal-modal", data-reveal)
-    h4 Finish up
-    p.
-      That’s it! Once the game begins, these instructions will be available to you at any time
-      from the top of the page.
-    p Remember: it might take you a while to see the patterns, so take your time.
+      When you click the Demo Mode button, the cards will be dealt in a
+      specific sequence. If you play each card in order, from the top left to the bottom
+      right, each card will match to the previous one. This gives you an easy way to study the
+      matching patterns.
+    p To exit demo mode at any time, click the Play Again button.
+    P That’s it! After a little practice you’ll be matching like a champion.
     p
       em Have fun!
     p
-      a(data-reveal-id="instructionsModalFour", class="button small radius previous", href="#") << About demo mode
-    //- p
-      a(class="button small radius close close-reveal-modal", href="#") Close instructions >>
+      a(data-reveal-id="instructionsModalThree", class="button small radius previous", href="#") << Calling a match
     a.close-reveal-modal &#215;
