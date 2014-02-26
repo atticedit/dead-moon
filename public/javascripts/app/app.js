@@ -202,7 +202,7 @@ function htmlIndicateWin(){
     //* set playerText to a comma and space plus the player's name, but keep it empty if no player
   if(player){ playerText = ', ' + player }
     //* set the win notification, incorporating the player's name
-  $('#winMessage').text('Hot biscuits' + playerText + '! You\’ve matched all 16 cards.');
+  $('#winMessage').text('Well played' + playerText + '! You\’ve matched all 16 cards.');
     //* trigger a modal notifying the player of a win
   setTimeout(function() { $('#winModal').foundation('reveal', 'open');}, 800);
     //* after an interval that will allow htmlAddCardToRun animations to conclude and a short added
